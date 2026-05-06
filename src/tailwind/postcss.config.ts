@@ -1,7 +1,6 @@
-const orianPostCSSConfig = {
+export default {
     plugins: {
         tailwindcss: {},
         autoprefixer: {},
     },
 };
-export default orianPostCSSConfig;

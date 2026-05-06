@@ -1,0 +1,41 @@
+export const bn_site_home_home:Record<string, any> = {
+    "title": "হোম",
+    "text": {
+        "print": "প্রিন্ট",
+        "breaking": "ব্রেকিং",
+        "contact": "যোগাযোগ",
+        "archive": "আর্কাইভ",
+        "gallery": "গ্যালারি",
+        "video": "ভিডিও",
+        "latest": "সর্বশেষ",
+        "feature": "ফিচার",
+        "popular": "জনপ্রিয়",
+        "trending": "চলমান",
+        "opinion": "মতামত",
+        "subscribe": "সাবস্ক্রাইব করুন",
+        "subscribe_title": "সর্বশেষ খবর পেতে আমাদের সাথেই থাকুন",
+        "subscribe_description": "সাবস্ক্রাইব বাটনে ক্লিক করে সাথে থাকার জন্য ধন্যবাদ।",
+        "information": "তথ্য",
+        "contact_us": "যোগাযোগ করুন",
+        "category": "জনপ্রিয় বিভাগসমূহ",
+        "follow": "আমাদের অনুসরণ করুন",
+        "office_bd": "অফিস (বাংলাদেশ)",
+        "office_in": "অফিস (ভারত)",
+        "phone": "ফোন",
+        "email": "ই-মেইল",
+        "poll": "অনলাইন জরিপ",
+        "total": "মোট ভোট",
+        "total_voter": "মোট ভোটার:",
+        "person": "জন",
+        "all_latest": "সর্বশেষ সংবাদ",
+        "all_feature": "ফিচার সংবাদ",
+        "all_popular": "জনপ্রিয় সংবাদ",
+        "all_opinion": "সকল মতামত দেখুন",
+        "modal_title": "পোস্ট শেয়ার করুন",
+        "copy": "কপি"
+    },
+    "placeholder": {
+        "name": "আপনার নাম লিখুন",
+        "email": "আপনার ইমেইল লিখুন"
+    }
+};

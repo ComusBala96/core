@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 // import defaultTheme from 'tailwindcss/defaultTheme'
 import colors from 'tailwindcss/colors';
-const orianTailwindConfig = {
+export default {
     darkMode: 'class',
     theme: {
         container: {
@@ -31,8 +31,8 @@ const orianTailwindConfig = {
                 white: '#FFFFFF',
                 hover: 'rgb(46,220,220)',
                 black: {
-                    black: colors.black,
-                    DEFAULT: '#1C2434',
+                    DEFAULT: colors.black,
+                    1: '#1C2434',
                     2: '#010101',
                 },
                 red: {
@@ -305,5 +305,3 @@ const orianTailwindConfig = {
     },
     plugins: [require('@tailwindcss/aspect-ratio')],
 };
-
-export default orianTailwindConfig;

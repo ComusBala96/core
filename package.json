@@ -1,38 +1,77 @@
 {
     "name": "@orians/core",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "homepage": "https://github.com/ComusBala96/core.git",
     "description": "A npm package of core for orians.",
     "type": "module",
-    "main": "build/cjs/index.js",
-    "module": "build/esm/index.js",
-    "types": "build/esm/index.d.ts",
+    "main": "cjs/index.js",
+    "module": "esm/index.js",
+    "types": "esm/index.d.ts",
     "exports": {
         ".": {
-            "require": "./build/cjs/index.js",
-            "import": "./build/esm/index.js"
+            "require": "./cjs/index.js",
+            "import": "./esm/index.js",
+            "types": "./esm/index.d.ts"
         },
-        "./node": {
-            "require": "./build/cjs/node/index.js",
-            "import": "./build/esm/node/index.js"
+        "./jquery": {
+            "require": "./cjs/lib/jquery/jquery.js",
+            "import": "./esm/lib/jquery/jquery.js",
+            "types": "./esm/lib/jquery/jquery.d.ts"
         },
-        "./plugins": {
-            "require": "./build/cjs/css/plugins.css",
-            "import": "./build/esm/css/plugins.css"
+        "./jquery/plugins": {
+            "require": "./cjs/lib/plugins/plugins.js",
+            "import": "./esm/lib/plugins/plugins.js",
+            "types": "./esm/lib/plugins/plugins.d.ts"
         },
-        "./select2.min.css": {
-            "require": "./build/cjs/css/select2.min.css",
-            "import": "./build/esm/css/select2.min.css"
+        "./app": {
+            "require": "./cjs/app/index.js",
+            "import": "./esm/app/index.js",
+            "types": "./esm/app/index.d.ts"
+        },
+        "./config": {
+            "require": "./cjs/app/config/config.js",
+            "import": "./esm/app/config/config.js",
+            "types": "./esm/app/config/config.d.ts"
+        },
+        "./lang": {
+            "require": "./cjs/app/lang/lang.js",
+            "import": "./esm/app/lang/lang.js",
+            "types": "./esm/app/lang/lang.d.ts"
+        },
+        "./style": {
+            "require": "./cjs/css/style.css",
+            "import": "./esm/css/style.css"
+        },
+        "./style/plugins": {
+            "require": "./cjs/css/plugins/plugins.css",
+            "import": "./esm/css/plugins/plugins.css"
+        },
+        "./style/select2.css": {
+            "require": "./cjs/css/custom/select2.css",
+            "import": "./esm/css/custom/select2.css"
         },
         "./tailwind": {
-            "require": "./build/cjs/tailwind/index.js",
-            "import": "./build/esm/tailwind/index.js"
+            "require": "./cjs/tailwind/tailwind.config.js",
+            "import": "./esm/tailwind/tailwind.config.js",
+            "types": "./esm/tailwind/index.d.ts"
         },
         "./tailwind/base": {
-            "require": "./build/cjs/tailwind/base.css",
-            "import": "./build/esm/tailwind/base.css"
-        }
+            "require": "./cjs/tailwind/base.css",
+            "import": "./esm/tailwind/base.css",
+            "types": "./esm/tailwind/base.d.ts"
+        },
+        "./tailwind/postcss": {
+            "require": "./cjs/tailwind/postcss.config.js",
+            "import": "./esm/tailwind/postcss.config.js",
+            "types": "./esm/tailwind/postcss.d.ts"
+        }       
+        
     },
+    "files": [
+        "esm",
+        "cjs",
+        "src"
+    ],
     "license": "MIT",
     "keywords": [
         "orians",
@@ -53,18 +92,28 @@
         "registry": "https://npm.pkg.github.com"
     },
     "scripts": {
-        "clean": "rm -rf build",
+        "clean": "rm -rf esm cjs",
         "build:esm": "tsc -p tsconfig.esm.json",
         "build:cjs": "tsc -p tsconfig.cjs.json",
         "build:esm:watch": "tsc -p tsconfig.esm.json --watch",
         "build:cjs:watch": "tsc -p tsconfig.cjs.json --watch",
-        "build:css": "cpy \"src/**/*.css\" build/esm --parents && cpy \"src/**/*.css\" build/cjs --parents",
-        "build:extraTypes": "cpy \"src/**/*.d.ts\" build/esm --parents && cpy \"src/**/*.d.ts\" build/cjs --parents",
-        "watch:assets": "chokidar \"src/**/*.{css,d.ts}\" -c \"npm run build:css && npm run build:extraTypes\"",
-        "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:extraTypes && npm run build:css",
-        "dev": "npm run clean && concurrently -k -n ESM,CJS,ASSETS \"npm:build:esm:watch\" \"npm:build:cjs:watch\" \"npm:watch:assets\""
+        "build:css": "cpy \"src/**/*.css\" esm --parents && cpy \"src/**/*.css\" cjs --parents",
+        "build:css:watch": "npm run build:css && chokidar \"src/**/*.{css}\" -c",
+        "build:ets": "cpy \"src/**/*.d.ts\" esm --parents && cpy \"src/**/*.d.ts\" cjs --parents",
+        "build:ets:watch": "npm run build:ets && chokidar \"src/**/*.{d.ts}\" -c",
+        "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:css",
+        "dev": "npm run clean && concurrently -k -n ESM,CJS,CSS \"npm:build:esm:watch\" \"npm:build:cjs:watch\" \"npm:build:css:watch\" "
+    },
+    "peerDependencies": {
+        "jquery": "^4.0.0",
+        "@orians/utils": "^2.0.0",
+        "@orians/admin": "^2.0.0"
     },
     "dependencies": {
+        "@orians/utils": "^2.0.0",
+        "@orians/admin": "^2.0.0",
+        "@types/papaparse": "^5.5.2",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
         "datatables.net-buttons-dt": "^3.2.4",
         "datatables.net-dt": "^2.3.2",
         "datatables.net-responsive-dt": "^3.0.5",
@@ -77,23 +126,27 @@
         "pdfmake": "^0.3.7",
         "summernote": "^0.9.1",
         "sweetalert2": "^11.15.3",
+        "toastr": "^2.1.4",
         "swiper": "^11.2.6",
         "select2": "^4.1.0-rc.0",
         "jquery-datetimepicker": "^2.5.21",
         "xlsx": "^0.18.5",
-        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "axios": "^1.8.4",
+        "html-to-image": "^1.11.11",
+        "jspdf": "^3.0.1",
+        "papaparse": "^5.5.3",
         "autoprefixer": "^10.4.20",
         "postcss": "^8.4.47",
-        "tailwindcss": "^3.4.13"
+        "tailwindcss": "^3.4.17"  
     },
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^8.57.1",
+        "@typescript-eslint/parser": "^8.57.1",
+        "@types/toastr": "^2.1.43",
         "jquery": "^4.0.0",
         "jquery-confirm": "^3.3.4",
         "jquery-datetimepicker": "^2.5.21",
         "jquery-validation": "^1.21.0",
-        "@typescript-eslint/eslint-plugin": "^8.57.1",
-        "@typescript-eslint/parser": "^8.57.1",
-        "@types/node": "^25.5.0",
         "chokidar-cli": "^3.0.0",
         "concurrently": "^9.2.1",
         "cpy-cli": "^7.0.0",
