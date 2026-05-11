@@ -74,7 +74,7 @@ export class Guard {
     static isWildcardSegment(segment: string): boolean {
         return isWildcardSegment(segment);
     }
-    static isPlugin(plugin: string[] | undefined): boolean {
+    static isPlugin(plugin: Record<string, any> | undefined): boolean {
         return isPlugin(plugin);
     }
     static hasElement(id: string): boolean {

@@ -142,8 +142,8 @@ export function isWildcardSegment(segment: string): boolean {
     return segment === '*';
 }
 
-export function isPlugin(plugin: string[] | undefined): boolean {
-    return Array.isArray(plugin) && plugin.length > 0;
+export function isPlugin(plugin: Record<string, any> | undefined): boolean {
+    return typeof plugin === 'object' && plugin !== null;
 }
 /**
  * Connection Error.

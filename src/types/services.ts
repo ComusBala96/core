@@ -12,7 +12,16 @@ export interface AppSuccessConfig {
     target?: string;
     [key: string]: any;
 }
-export type AppPlugins = ['dataTable', 'jodit', 'select2', 'datepicker', 'timepicker', 'colorpicker', 'summernote'];
+export interface AppPlugins {
+    dataTable?: Record<string, any> | boolean;
+    jodit?: Record<string, any> | boolean;
+    select2?: Record<string, any> | boolean;
+    datetimepicker?: Record<string, any> | boolean;
+    datepicker?: Record<string, any> | boolean;
+    timepicker?: Record<string, any> | boolean;
+    colorpicker?: Record<string, any> | boolean;
+    summernote?: Record<string, any> | boolean;
+}
 export interface AppConfig {
     element?: string | undefined;
     plugin?: AppPlugins;

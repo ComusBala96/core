@@ -1,5 +1,5 @@
 import { Api } from 'datatables.net-dt';
-import { loadDataTable } from '../plugins';
+import { loadDataTable, multi_select } from '../plugins';
 import { AppConfig, DataTableOptions, DownloadExcelOptions, ExcelConfig, PdfConfig, SuccessHandler } from '../types';
 import { Guard } from '../utils';
 import { Crud } from './crud';
@@ -19,14 +19,24 @@ export class App {
         if (typeof this.config?.element === 'string' && this.config?.element !== '')
             if (Guard.hasElement(this.config?.element)) {
                 // Plugin dataTable
-                if (Guard.isPlugin(this.config?.plugin) && this.config?.plugin?.includes('dataTable')) {
+                if (Guard.isPlugin(this.config?.plugin) && this.config?.plugin?.dataTable) {
                     loadDataTable(this.config?.element, this.config);
                 }
                 // ajax request
+                if (Guard.isPlugin(this.config?.plugin) && this.config?.validation) {
+                    Ajax.post(this.config);
+                }
                 if (!Guard.isPlugin(this.config?.plugin)) {
                     Ajax.make(this.config);
                 }
             }
+    }
+    protected static bootPlugin(): void {
+
+        if(this.config?.plugin?.select2){
+            multi_select(this.config?.plugin?.select2)
+        }
+
     }
     protected static bootTable(): void {
         const el = this.config?.element;
@@ -59,6 +69,7 @@ export class App {
     }
     static create<T extends typeof App>(this: T, config: AppConfig): T {
         this.boot(config);
+        this.bootPlugin();
         return this;
     }
     static update<T extends typeof App>(this: T, config: AppConfig): T {

@@ -49,8 +49,6 @@ export interface AfterSuccess {
 }
 import { AjaxDataType, AjaxType } from './http';
 
-
-
 export type DtValue = string | number | null;
 
 export type UpdateColItem = {
@@ -199,6 +197,9 @@ export interface MultiSelectOptions {
     element?: string;
     tags?: boolean;
     placeholder?: string;
+    tokenSeparators?: string[];
+    allowClear?: boolean;
+    width?: string;
     [key: string]: any;
 }
 
