@@ -1,0 +1,155 @@
+{
+    "name": "@orians/core",
+    "version": "1.0.1",
+    "homepage": "https://github.com/ComusBala96/core.git",
+    "description": "A npm package of core for orians.",
+    "type": "module",
+    "main": "cjs/index.js",
+    "module": "esm/index.js",
+    "types": "esm/index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./cjs/index.js",
+            "import": "./esm/index.js",
+            "types": "./esm/index.d.ts"
+        },
+        "./jquery": {
+            "require": "./cjs/lib/jquery/jquery.js",
+            "import": "./esm/lib/jquery/jquery.js",
+            "types": "./esm/lib/jquery/jquery.d.ts"
+        },
+        "./jquery/plugins": {
+            "require": "./cjs/lib/plugins/plugins.js",
+            "import": "./esm/lib/plugins/plugins.js",
+            "types": "./esm/lib/plugins/plugins.d.ts"
+        },
+        "./app": {
+            "require": "./cjs/app/index.js",
+            "import": "./esm/app/index.js",
+            "types": "./esm/app/index.d.ts"
+        },
+        "./config": {
+            "require": "./cjs/app/config/config.js",
+            "import": "./esm/app/config/config.js",
+            "types": "./esm/app/config/config.d.ts"
+        },
+        "./lang": {
+            "require": "./cjs/app/lang/lang.js",
+            "import": "./esm/app/lang/lang.js",
+            "types": "./esm/app/lang/lang.d.ts"
+        },
+        "./style": {
+            "require": "./cjs/css/style.css",
+            "import": "./esm/css/style.css"
+        },
+        "./style/plugins": {
+            "require": "./cjs/css/plugins/plugins.css",
+            "import": "./esm/css/plugins/plugins.css"
+        },
+        "./style/select2.css": {
+            "require": "./cjs/css/custom/select2.css",
+            "import": "./esm/css/custom/select2.css"
+        },
+        "./tailwind": {
+            "require": "./cjs/tailwind/tailwind.config.js",
+            "import": "./esm/tailwind/tailwind.config.js",
+            "types": "./esm/tailwind/index.d.ts"
+        },
+        "./tailwind/base": {
+            "require": "./cjs/tailwind/base.css",
+            "import": "./esm/tailwind/base.css",
+            "types": "./esm/tailwind/base.d.ts"
+        },
+        "./tailwind/postcss": {
+            "require": "./cjs/tailwind/postcss.config.js",
+            "import": "./esm/tailwind/postcss.config.js",
+            "types": "./esm/tailwind/postcss.d.ts"
+        }       
+        
+    },
+    "files": [
+        "esm",
+        "cjs",
+        "src"
+    ],
+    "license": "MIT",
+    "keywords": [
+        "orians",
+        "npm",
+        "@orians",
+        "@orians/core",
+        "core"
+    ],
+    "author": {
+        "name": "OrianSoft",
+        "email": "info@oriansoft.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ComusBala96/core.git"
+    },
+    "scripts": {
+        "clean": "rm -rf esm cjs",
+        "build:esm": "tsc -p tsconfig.esm.json",
+        "build:cjs": "tsc -p tsconfig.cjs.json",
+        "build:esm:watch": "tsc -p tsconfig.esm.json --watch",
+        "build:cjs:watch": "tsc -p tsconfig.cjs.json --watch",
+        "build:css": "cpy \"src/**/*.css\" esm --parents && cpy \"src/**/*.css\" cjs --parents",
+        "build:css:watch": "npm run build:css && chokidar \"src/**/*.{css}\" -c",
+        "build:ets": "cpy \"src/**/*.d.ts\" esm --parents && cpy \"src/**/*.d.ts\" cjs --parents",
+        "build:ets:watch": "npm run build:ets && chokidar \"src/**/*.{d.ts}\" -c",
+        "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:css",
+        "dev": "npm run clean && concurrently -k -n ESM,CJS,CSS \"npm:build:esm:watch\" \"npm:build:cjs:watch\" \"npm:build:css:watch\" "
+    },
+    "peerDependencies": {
+        "jquery": "^3.7.1"
+    },
+    "dependencies": {
+        "@types/papaparse": "^5.5.2",
+        "@tailwindcss/aspect-ratio": "^0.4.2",
+        "datatables.net-buttons-dt": "^3.2.4",
+        "datatables.net-dt": "^2.3.2",
+        "datatables.net-responsive-dt": "^3.0.5",
+        "datatables.net-searchbuilder-dt": "^1.8.3",
+        "datatables.net-searchpanes-dt": "^2.3.4",
+        "datatables.net-select-dt": "^3.0.1",
+        "highcharts": "^12.2.0",
+        "jodit": "^4.6.2",
+        "moment": "^2.30.1",
+        "pdfmake": "^0.3.7",
+        "summernote": "^0.9.1",
+        "sweetalert2": "^11.15.3",
+        "toastr": "^2.1.4",
+        "swiper": "^11.2.6",
+        "select2": "^4.0.13",
+        "jquery-datetimepicker": "^2.5.21",
+        "xlsx": "^0.18.5",
+        "axios": "^1.8.4",
+        "html-to-image": "^1.11.11",
+        "jspdf": "^3.0.1",
+        "papaparse": "^5.5.3",
+        "autoprefixer": "^10.4.20",
+        "postcss": "^8.4.47",
+        "tailwindcss": "^3.4.17"  
+    },
+    "devDependencies": {
+        "@types/select2": "^4.0.63",
+        "@typescript-eslint/eslint-plugin": "^8.57.1",
+        "@typescript-eslint/parser": "^8.57.1",
+        "@types/toastr": "^2.1.43",
+        "jquery": "^3.7.1",
+        "jquery-confirm": "^3.3.4",
+        "jquery-datetimepicker": "^2.5.21",
+        "jquery-validation": "^1.21.0",
+        "chokidar-cli": "^3.0.0",
+        "concurrently": "^9.2.1",
+        "cpy-cli": "^7.0.0",
+        "eslint": "^9.39.4",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-prettier": "^5.1.3",
+        "eslint-plugin-react": "^7.34.3",
+        "eslint-plugin-react-hooks": "^5.1.0",
+        "prettier": "^3.3.2",
+        "typescript": "^5.9.3"
+    }
+}
