@@ -10,23 +10,25 @@ export function tomSelect(op: Record<string, any> | boolean) {
         console.error('Select plugin not loaded');
         return;
     }
-    new TomSelect(selector, {
-        create: create,
-        sortField: [
-            {
-                field: field,
-                direction: direction,
+    if ($(selector).length > 0) {
+        new TomSelect(selector, {
+            create: create,
+            sortField: [
+                {
+                    field: field,
+                    direction: direction,
+                },
+            ],
+            placeholder: placeholder,
+            plugins: {
+                remove_button: {
+                    title: 'Remove this item'
+                },
+                clear_button: {
+                    title: 'Clear'
+                },
+                dropdown_input: {}
             },
-        ],
-        placeholder: placeholder,
-        plugins: {
-            remove_button: {
-                title: 'Remove this item'
-            },
-            clear_button: {
-                title: 'Clear'
-            },
-            dropdown_input: {}
-        },
-    });
+        });
+    }
 }
