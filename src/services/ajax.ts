@@ -1,46 +1,77 @@
+
+import { Lang } from '../app';
 import { Http } from '../http';
-import { validate } from '../plugins';
+import { validate } from '../resources';
 import { AppConfig } from '../types';
-import { Obj } from '../utils';
+import { Form, Guard, Obj, Sweet } from '../utils';
 import { App } from './app';
 
-export class Ajax extends App {
-    static make(op: AppConfig): Ajax {
-        Http.ajax.make(op, this.successHandler);
-
-        return this;
-    }
-
-    static get<T extends typeof Ajax>(this: T, op: AppConfig): T {
-        const { method = 'GET' } = op;
-
-        Http.ajax.make(Obj.merge(op, { method }), this.successHandler);
-
-        return this;
-    }
-
-    static post<T extends typeof Ajax>(this: T, op: AppConfig): T {
-        const { method = 'POST', validation } = op;
-        if (validation) {
-            validate(op, this.successHandler);
+export class Ajax {
+    static make<T extends typeof Ajax>(this: T, op: AppConfig): void {
+        const { element, type = 'submit' } = op;
+        switch (type) {
+            case 'submit':
+                $(`#${element}`).on('submit', function (this: HTMLElement, e: JQuery.SubmitEvent) {
+                    e.preventDefault();
+                    const form = $(this)[0] as HTMLFormElement;
+                    const formData = Form.getData({ ...op, form });
+                    if (Guard.hasInternet()) {
+                        op.payload = formData;
+                        Http.ajax.send(op, App.successHandler);
+                    }
+                });
+                break;
+            case 'request':
+                if (Guard.hasInternet()) {
+                    Http.ajax.send(op, App.successHandler);
+                }
+                break;
+            default:
+                return;
         }
-        Http.ajax.make(Obj.merge(op, { method }), this.successHandler);
-
-        return this;
+        return;
     }
 
-    static put<T extends typeof Ajax>(this: T, op: AppConfig): T {
+    static get<T extends typeof Ajax>(this: T, op: AppConfig): void {
+        const { method = 'GET' } = op;
+        Http.ajax.make(Obj.merge(op, { method }), App.successHandler);
+        return;
+    }
+
+    static post<T extends typeof Ajax>(this: T, op: AppConfig): void {
+        const { element, validation, method = 'POST', dataType = 'form', } = op;
+        if (!Guard.hasInternet()) {
+            Sweet.tost.error({ text: Lang.sweet.error.no_internet, timer: 300, position: 'center', })
+            return;
+        }
+        if (validation) {
+            validate(op, App.successHandler);
+            return;
+        }
+        if (dataType.toLocaleLowerCase() === 'form') {
+            $(`#${element}`).on('submit', function (this: HTMLElement, e: JQuery.SubmitEvent) {
+                e.preventDefault();
+                op.payload = Form.getData({ ...op, form: $(this)[0] as HTMLFormElement });
+                Http.ajax.send(Obj.merge(op, { method }), App.successHandler);
+            });
+            return;
+        }
+        Http.ajax.send(Obj.merge(op, { method }), App.successHandler);
+        return;
+    }
+
+    static put<T extends typeof Ajax>(this: T, op: AppConfig): void {
         const { method = 'PUT', confirm = true } = op;
-        Http.ajax.make(Obj.merge(op, { method, confirm }), this.successHandler);
+        Http.ajax.make(Obj.merge(op, { method, confirm }), App.successHandler);
 
-        return this;
+        return;
     }
 
-    static delete<T extends typeof Ajax>(this: T, op: AppConfig): T {
+    static delete<T extends typeof Ajax>(this: T, op: AppConfig): void {
         const { method = 'DELETE', confirm = true } = op;
 
-        Http.ajax.make(Obj.merge(op, { method, confirm }), this.successHandler);
+        Http.ajax.make(Obj.merge(op, { method, confirm }), App.successHandler);
 
-        return this;
+        return;
     }
 }

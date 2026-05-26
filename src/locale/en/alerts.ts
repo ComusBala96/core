@@ -56,7 +56,8 @@ export const en_alerts: Record<string, any> = {
         },
         "error": {
             "text": "Something went wrong! Try again.",
-            "title": "Error"
+            "title": "Error",
+            "no_internet": "Internet connection required!"
         },
         "warning": {
             "text": "Please be careful!",

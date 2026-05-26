@@ -1,4 +1,4 @@
-import { deepGet, getDataAttr, getNestedValue, jsonParse, merge, mergePayload } from '../../helpers';
+import { deepGet, getDataAttr, getValidationMessages, getNestedValue, jsonParse, merge, mergePayload } from '../../helpers';
 
 export class Obj {
     static merge<T extends Record<string, any>, U extends Record<string, any>>(a: T, b: U): T & U {
@@ -19,5 +19,8 @@ export class Obj {
     }
     static jsonParse(data: string): Record<string, any> {
         return jsonParse(data);
+    }
+    static getValidationMessages(rules: Record<string, any>) {
+        return getValidationMessages(rules);
     }
 }

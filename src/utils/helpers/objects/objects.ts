@@ -29,7 +29,7 @@ export function getNestedValue(path: string, object: Record<string, any>): any {
 /**
  * Get messages from Form rules.
  */
-export function getMessageBags(rules: Record<string, any>) {
+export function getValidationMessages(rules: Record<string, any>) {
     const messages: Record<string, any> = {};
     const langObj: Record<string, any> = {};
     Object.values(rules).forEach((rule: any) => {

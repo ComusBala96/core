@@ -6,8 +6,8 @@ export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 export type RequestType = 'request' | 'submit';
 export type RequestDataType = 'form' | 'json';
 export interface AppSuccessConfig {
-    reload?: false;
-    alert?: string;
+    reload?: boolean;
+    type?: string;
     load_html?: false;
     target?: string;
     [key: string]: any;
@@ -38,6 +38,7 @@ export interface AppConfig {
     token?: string;
     success?: AppSuccessConfig;
     updateCols?: UpdateColsOption;
+    beforeSend?: (op: AppConfig, callBack: (op: AppConfig) => void) => void;
     [key: string]: any;
 }
 export interface PdfConfig {

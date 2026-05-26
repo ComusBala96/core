@@ -1,5 +1,4 @@
 import { Config } from '../app';
-import { Errors } from '../services/errors';
 import { Success } from '../services/success';
 import { AppConfig } from '../types';
 import { Loader, Sweet } from '../utils';
@@ -23,18 +22,48 @@ export class Http {
 
         },
         send(op: AppConfig, callBack?: undefined | ((op: AppConfig, res: Record<string, any>) => void)): void {
-            this.core(op, (op, res) => {
-                if (typeof callBack === 'function') {
-                    callBack(op, res);
-                    return;
+            const { confirm = false, success, beforeSend } = op;
+            if ((success?.type === 'load_html' && success?.reload) || success?.type === 'api_response') {
+                const { target = 'none' } = success || {};
+                if (target !== 'none') {
+                    $(`#${target}`).html('');
                 }
-                if (res.success) {
-                    Success.handle(op, res);
-                } else {
-                    Errors.handle(op, res);
-                }
+            }
 
-            });
+            if (confirm) {
+                Sweet.confirm().then((result) => {
+                    if (!result.isConfirmed) return;
+                    this.send(op, ( op, res) => {
+                        callBack ? callBack(op, res) : Success.handle(op, res);
+                    });
+
+                });
+            } else {
+                if (beforeSend) {
+                    beforeSend(op, (op) =>
+                        this.send(op, (op, res) => {
+                            callBack ? callBack(op, res) : Success.handle(op, res);
+                        }),
+                    );
+                } else {
+                    this.send(op, (op, res) => {
+                        callBack ? callBack(op, res) : Success.handle(op, res);
+                    });
+                }
+            }
+
+            // this.core(op, (op, res) => {
+            //     if (typeof callBack === 'function') {
+            //         callBack(op, res);
+            //         return;
+            //     }
+            //     if (res.success) {
+            //         Success.handle(op, res);
+            //     } else {
+            //         Errors.handle(op, res);
+            //     }
+
+            // });
         },
         core(op: AppConfig, callBack: (op: AppConfig, res: Record<string, any>) => void) {
             const { url = '/', payload = {}, method = 'POST', dataType = 'form', loader = true, token = null } = op;

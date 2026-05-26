@@ -1,7 +1,7 @@
-import { Config } from '../../app';
+import { Lang } from '../../app';
 import { Http } from '../../http';
 import { AppConfig } from '../../types';
-import { Dom, Guard } from '../../utils';
+import { Dom, Form, Guard, Obj, Sweet } from '../../utils';
 
 export function validate(op: AppConfig, callBack: undefined | ((op: AppConfig, res: Record<string, any>) => void)): void {
     const { element, rules = {}, messages = {}, afterValidation } = op;
@@ -9,7 +9,7 @@ export function validate(op: AppConfig, callBack: undefined | ((op: AppConfig, r
     // @ts-ignore
     $form.validate({
         rules,
-        messages: messages,
+        messages: messages ?? Obj.getValidationMessages(rules),
         ignore: ':hidden:not(textarea)',
         errorElement: 'em',
         errorPlacement(error: HTMLFormElement, el: HTMLFormElement) {
@@ -35,16 +35,11 @@ export function validate(op: AppConfig, callBack: undefined | ((op: AppConfig, r
                 afterValidation(form, op);
                 return;
             }
-            if (!Guard.hasInternet()) return;
-            const data = new FormData(form);
-            const csrf_token = Config.csrf_token;
-            const locale = Config.locale;
-            if (csrf_token && locale) {
-                data.append('_token', csrf_token);
-                data.append('client', 'w');
-                data.append('lang', locale);
+            if (!Guard.hasInternet()) {
+                Sweet.tost.error({ text: Lang.sweet.error.no_internet, timer: 300, position: 'center', })
+                return;
             }
-            Http.ajax.send({ ...op, payload: data }, callBack);
+            Http.ajax.send(Obj.merge(op, { payload: Form.getData({ ...op, form }) }), callBack);
             return;
         },
     });
