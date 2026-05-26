@@ -52,11 +52,11 @@ export class Ajax {
             $(`#${element}`).on('submit', function (this: HTMLElement, e: JQuery.SubmitEvent) {
                 e.preventDefault();
                 op.payload = Form.getData({ ...op, form: $(this)[0] as HTMLFormElement });
-                Http.ajax.send(Obj.merge(op, { method }), App.successHandler);
+                Http.ajax.send(Obj.merge(op, { method: method.toUpperCase() }), App.successHandler);
             });
             return;
         }
-        Http.ajax.send(Obj.merge(op, { method }), App.successHandler);
+        Http.ajax.send(Obj.merge(op, { method: method.toUpperCase() }), App.successHandler);
         return;
     }
 

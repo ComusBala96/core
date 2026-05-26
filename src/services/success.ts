@@ -17,7 +17,7 @@ export class Success {
             console.log('success response', res);
         }
         if (res?.tost) {
-            Sweet.tost.success({ text: res?.data?.alert, timer: 600, position: 'bottom-end', })
+            Sweet.tost.success({ text: res?.data?.message, timer: 600, position: 'bottom-end', })
             if (res?.reload) {
                 Url.resetTable(op.api as Api);
             }
@@ -26,7 +26,7 @@ export class Success {
             }
         }
         if (res?.sweet) {
-            Sweet.success({ text: res?.data?.alert })
+            Sweet.success({ text: res?.data?.message })
             if (res?.reload) {
                 Url.resetTable(op.api as Api);
             }

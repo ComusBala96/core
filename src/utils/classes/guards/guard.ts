@@ -39,8 +39,8 @@ export class Guard {
         return isArray(value);
     }
 
-    static isObject<T extends object = Record<string, any>>(value: unknown): value is T {
-        return isObject(value);
+    static isObject<T extends object = Record<string, any>>(obj: T): obj is T {
+        return isObject(obj);
     }
 
     static isFunction<T extends (...args: any[]) => any = (...args: any[]) => any>(value: unknown): value is T {

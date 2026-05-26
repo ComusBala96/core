@@ -1,6 +1,6 @@
 import { Config } from "../app";
 import { AppConfig } from "../types";
-import { Error, Sweet } from "../utils";
+import { Error, Loader, Sweet } from "../utils";
 
 export class Errors {
     public op: AppConfig;
@@ -23,6 +23,9 @@ export class Errors {
         }
         if (res?.wrong) {
             Sweet.error({ html: res?.title })
+        }
+        if (res?.errors) {
+            Loader.showErrors(res?.errors);
         }
         return this;
     }

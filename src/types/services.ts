@@ -26,7 +26,7 @@ export interface AppPlugins {
 }
 export interface AppConfig {
     element?: string | undefined;
-    plugin?: AppPlugins;
+    plugins?: AppPlugins;
     confirm?: false;
     validation?: true;
     rules?: Record<string, Record<string, Record<string, any>>>;

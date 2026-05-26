@@ -56,8 +56,8 @@ export function isArray<T = any>(value: unknown): value is T[] {
  * @param value unknown.
  * @return boolean.
  */
-export function isObject<T extends object = Record<string, any>>(value: unknown): value is T {
-    return Object.prototype.toString.call(value) === '[object Object]';
+export function isObject<T extends object = Record<string, any>>(obj: T): obj is T {
+    return Object.keys(obj).length > 0 && typeof obj === 'object' && obj !== null && !Array.isArray(obj);
 }
 
 /**
