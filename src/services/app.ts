@@ -1,7 +1,7 @@
 import { Api } from 'datatables.net-dt';
 import { loadDataTable, tomSelect, jodit, datepicker, datetimepicker, timepicker, swiper } from '../plugins';
 import { AppConfig, DataTableOptions, DownloadExcelOptions, ExcelConfig, PdfConfig } from '../types';
-import { Guard } from '../utils';
+import { Dom, Guard } from '../utils';
 import { Crud } from './crud';
 import { Ajax } from './ajax';
 import { Config } from '../app';
@@ -39,7 +39,7 @@ export class App {
             }
         }
     }
-    protected static bootTable(config:AppConfig): void {
+    protected static bootTable(config: AppConfig): void {
         const el = config?.element;
         if (typeof el !== 'string' || !el) return;
         (window as any)[el] = (_table: string, api: Api<any>, op: DataTableOptions) => {
@@ -162,6 +162,10 @@ export class App {
     static plugins<T extends typeof App>(this: T, config: AppConfig): T {
         this.config = config;
         this.bootPlugin(this.config);
+        return this;
+    }
+    static event<T extends typeof App>(this: T, event: string, selector: string, handler: (e: Event, target: HTMLElement) => void | Promise<void>, options?: AddEventListenerOptions): T {
+        Dom.on(event, selector, handler, options);
         return this;
     }
     static legacy<T extends typeof App>(this: T, config: AppConfig, callback: Function): T {

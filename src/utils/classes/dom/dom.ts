@@ -22,6 +22,6 @@ export class Dom {
     }
 
     static on(event: string, selector: string, handler: (e: Event, target: HTMLElement) => void | Promise<void>, options?: AddEventListenerOptions) {
-        on(event, selector, handler, options);
+        return on(event, selector, handler, options);
     }
 }

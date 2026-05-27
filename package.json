@@ -1,6 +1,6 @@
 {
     "name": "@orians/core",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "homepage": "https://github.com/ComusBala96/core.git",
     "description": "A npm package of core for orians.",
     "type": "module",
@@ -45,10 +45,6 @@
         "./style/plugins": {
             "require": "./cjs/css/plugins/plugins.css",
             "import": "./esm/css/plugins/plugins.css"
-        },
-        "./style/select2.css": {
-            "require": "./cjs/css/custom/select2.css",
-            "import": "./esm/css/custom/select2.css"
         },
         "./tailwind": {
             "require": "./cjs/tailwind/tailwind.config.js",
