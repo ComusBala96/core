@@ -4,6 +4,7 @@ export const en_errors: Record<string, any> = {
     },
     "error": "Error",
     "server_wrong": "Something went wrong in the server, see log for details.",
+    "went_wrong": "Something went wrong, try again.",
     "server_not_found": "Server not found, try again later.",
     "inflate_error": "Some errors in your input, please check.",
     "action_error": "Action unsuccessful, please resolve the errors first.",

@@ -32,6 +32,6 @@ export function getFormData(op: AppConfig): FormData | Record<string, any> {
 }
 
 export function resetForm(formId: string) {
-    const form = getElementById(formId) as HTMLFormElement | null;
+    const form = getElementById(formId).get(0) as HTMLFormElement;
     if (form) form.reset();
 }

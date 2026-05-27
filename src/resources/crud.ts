@@ -5,20 +5,20 @@ import { Guard, Obj, Sweet } from '../utils';
 import { getSelectedTableData, getUpdatedTableData } from './plugins/datatable';
 
 export function bulkUpdate(op: AppConfig = {}) {
-    const { element = '', api, dataType = 'json', type = 'request', success = { alert: 'success' }, payload = {}, updateCols = false } = op;
+    const { element = '', confirm = true, api, dataType = 'json', payload = {}, updateCols = false } = op;
     if (Guard.hasElement(element)) {
         $('#' + element)
             .off('click')
             .on('click', () => {
                 let data = getUpdatedTableData(element, api, updateCols);
                 data = Obj.mergePayload(data, payload);
-                Ajax.put(Obj.merge(op, { payload: data, dataType, type, success }));
+                Ajax.post(Obj.merge(op, { payload: data, dataType, confirm}));
             });
     }
 }
 
 export function bulkDelete(op: AppConfig) {
-    const { element = '', api, dataType = 'json', type = 'request', success = { alert: 'success' }, tableLoadType = 'ajax', payload = {} } = op;
+    const { element = '', deleteConfirm = true, api, dataType = 'json', tableLoadType = 'ajax', payload = {} } = op;
     if (Guard.hasElement(element)) {
         $('#' + element)
             .off('click')
@@ -30,7 +30,7 @@ export function bulkDelete(op: AppConfig) {
                 }
                 let data = getSelectedTableData(element, selected, tableLoadType);
                 data = Obj.mergePayload(data, payload);
-                Ajax.delete(Obj.merge(op, { payload: data, dataType, type, success }));
+                Ajax.post(Obj.merge(op, { payload: data, dataType, deleteConfirm }));
             });
     }
 }

@@ -41,6 +41,6 @@ export function redirect(path: string | null): void {
     console.error('Redirect URL not found!');
 }
 
-export function resetTable(api: Api): void {
+export function reloadTable(api: Api): void {
     api.ajax.reload();
 }

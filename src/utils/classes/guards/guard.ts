@@ -16,6 +16,7 @@ import {
     isString,
     isValidUrl,
     isWildcardSegment,
+    domElement,
 } from '../../helpers';
 
 export class Guard {
@@ -82,5 +83,8 @@ export class Guard {
     }
     static hasInternet(): boolean {
         return hasInternet();
+    }
+    static domElement(element: string): boolean {
+        return domElement(element);
     }
 }

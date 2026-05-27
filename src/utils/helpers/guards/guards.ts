@@ -168,3 +168,6 @@ export function hasElement(id: string): boolean {
     const el = getElementById(id);
     return el.length > 0;
 }
+export function domElement(element: string): boolean {
+    return $('#' + element).length > 0;
+}

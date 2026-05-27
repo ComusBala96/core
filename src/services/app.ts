@@ -8,6 +8,8 @@ import { Config } from '../app';
 
 export class App {
     static config: AppConfig = {};
+    static tableConfig: AppConfig = {};
+    static createConfig: AppConfig = {};
     static deleteConfig: AppConfig = {};
     static updateConfig: AppConfig = {};
     static pdfConfig: PdfConfig = {};
@@ -15,82 +17,70 @@ export class App {
     static beforeSuccessHandler?: undefined | ((op: AppConfig, res: Record<string, any>) => void);
     static successHandler?: undefined | ((op: AppConfig, res: Record<string, any>) => void);
     static afterSuccessHandler?: undefined | ((op: AppConfig, res: Record<string, any>) => void);
-
-    protected static boot(config: AppConfig): void {
-        this.config = config;
-        if (typeof this.config?.element === 'string' && this.config?.element !== '')
-            if (Guard.hasElement(this.config?.element)) {
-                // Plugins dataTable
-                if (Guard.isPlugin(this.config?.plugins) && this.config?.plugins?.dataTable) {
-                    loadDataTable(this.config?.element, this.config);
-                }
-                // ajax request
-                if (Guard.isPlugin(this.config?.plugins) && this.config?.validation) {
-                    Ajax.post(this.config);
-                }
-                if (!Guard.isPlugin(this.config?.plugins)) {
-                    Ajax.make(this.config);
-                }
+    protected static bootPlugin(config: AppConfig): void {
+        if (Guard.isPlugin(config?.plugins)) {
+            if (config?.plugins?.select) {
+                tomSelect(config?.plugins?.select);
             }
-    }
-    protected static bootPlugin(): void {
-        if (this.config?.plugins?.select) {
-            tomSelect(this.config?.plugins?.select);
-        }
-        if (this.config?.plugins?.jodit) {
-            jodit(this.config?.plugins?.jodit);
-        }
-        if (this.config?.plugins?.datepicker) {
-            datepicker(this.config?.plugins?.datepicker);
-        }
-        if (this.config?.plugins?.timepicker) {
-            timepicker(this.config?.plugins?.timepicker);
-        }
-        if (this.config?.plugins?.datetimepicker) {
-            datetimepicker(this.config?.plugins?.datetimepicker);
-        }
-        if (this.config?.plugins?.swiper) {
-            swiper(this.config?.plugins?.swiper);
+            if (config?.plugins?.jodit) {
+                jodit(config?.plugins?.jodit);
+            }
+            if (config?.plugins?.datepicker) {
+                datepicker(config?.plugins?.datepicker);
+            }
+            if (config?.plugins?.timepicker) {
+                timepicker(config?.plugins?.timepicker);
+            }
+            if (config?.plugins?.datetimepicker) {
+                datetimepicker(config?.plugins?.datetimepicker);
+            }
+            if (config?.plugins?.swiper) {
+                swiper(config?.plugins?.swiper);
+            }
         }
     }
-    protected static bootTable(): void {
-        const el = this.config?.element;
+    protected static bootTable(config:AppConfig): void {
+        const el = config?.element;
         if (typeof el !== 'string' || !el) return;
         (window as any)[el] = (_table: string, api: Api<any>, op: DataTableOptions) => {
             // PDF
-            if (this.pdfConfig?.btn) {
+            if (this.pdfConfig?.btn && Guard.domElement(this.pdfConfig?.btn)) {
                 Crud.downloadPdf({ ...op, ...this.pdfConfig } as DataTableOptions);
             }
             // Excel
-            if (this.excelConfig?.btn) {
+            if (this.excelConfig?.btn && Guard.domElement(this.excelConfig?.btn)) {
                 Crud.downloadExcel({ ...op, ...this.excelConfig } as DownloadExcelOptions);
             }
             // BULK Update
-            if (this.updateConfig?.element) {
+            if (this.updateConfig?.element && Guard.domElement(this.updateConfig?.element)) {
                 Crud.bulkUpdate({ ...this.updateConfig, api });
             }
             // BULK Delete
-            if (this.deleteConfig?.element) {
+            if (this.deleteConfig?.element && Guard.domElement(this.deleteConfig?.element)) {
                 Crud.bulkDelete({ ...this.deleteConfig, api });
             }
         };
     }
     static table<T extends typeof App>(this: T, config: AppConfig): T {
-        this.boot(config);
-        this.bootTable();
+        this.tableConfig = config;
+        if (typeof this.tableConfig?.element === 'string' && this.tableConfig?.element !== '')
+            if (Guard.domElement(this.tableConfig?.element) && Guard.isPlugin(this.tableConfig?.plugins) && this.tableConfig?.plugins?.dataTable) {
+                loadDataTable(this.tableConfig?.element, this.tableConfig);
+            }
+        this.bootTable(this.tableConfig);
+        this.bootPlugin(this.tableConfig);
         return this;
     }
     static submit<T extends typeof App>(this: T, config: AppConfig): T {
         try {
-            if (Guard.isObject(config) && !Guard.isEmpty(config)) {
-                if (Config.app_env) {
-                    console.log('App.submit method called with config:', config);
+            this.config = config;
+            if (typeof this.config?.element === 'string' && this.config?.element !== '')
+                if (Guard.domElement(this.config?.element) && Guard.isObject(this.config) && !Guard.isEmpty(this.config)) {
+                    if (Config.app_env) {
+                        console.log('App.submit method called with config:', this.config);
+                    }
+                    Ajax.post(this.config);
                 }
-                this.config = config;
-                Ajax.post(this.config);
-            } else {
-                throw new Error('Invalid configuration for App.submit method. Please provide a valid AppConfig object.');
-            }
         } catch (error) {
             throw new Error(`App.submit method failed: ${(error as Error).message}`);
         }
@@ -102,12 +92,35 @@ export class App {
         return this;
     }
     static create<T extends typeof App>(this: T, config: AppConfig): T {
-        this.boot(config);
-        this.bootPlugin();
+        try {
+            this.createConfig = config;
+            if (typeof this.createConfig?.element === 'string' && this.createConfig?.element !== '')
+                if (Guard.domElement(this.createConfig?.element) && Guard.isObject(this.createConfig) && !Guard.isEmpty(this.config)) {
+                    if (Config.app_env) {
+                        console.log('App.create method called with config:', this.createConfig);
+                    }
+                    Ajax.post(this.createConfig);
+                    this.bootPlugin(this.createConfig);
+                }
+        } catch (error) {
+            throw new Error(`App.create method failed: ${(error as Error).message}`);
+        }
         return this;
     }
     static update<T extends typeof App>(this: T, config: AppConfig): T {
-        this.config = config;
+        try {
+            this.updateConfig = config;
+            if (typeof this.updateConfig?.element === 'string' && this.updateConfig?.element !== '')
+                if (Guard.domElement(this.updateConfig?.element) && Guard.isObject(this.updateConfig) && !Guard.isEmpty(this.updateConfig)) {
+                    if (Config.app_env) {
+                        console.log('App.update method called with config:', this.updateConfig);
+                    }
+                    Ajax.post(this.updateConfig);
+                    this.bootPlugin(this.updateConfig);
+                }
+        } catch (error) {
+            throw new Error(`App.update method failed: ${(error as Error).message}`);
+        }
         return this;
     }
     static destroy<T extends typeof App>(this: T, config: AppConfig): T {
@@ -148,7 +161,7 @@ export class App {
     }
     static plugins<T extends typeof App>(this: T, config: AppConfig): T {
         this.config = config;
-        this.bootPlugin();
+        this.bootPlugin(this.config);
         return this;
     }
     static legacy<T extends typeof App>(this: T, config: AppConfig, callback: Function): T {

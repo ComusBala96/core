@@ -21,14 +21,17 @@ export class Http {
             }
         },
         send(op: AppConfig, callBack?: undefined | ((op: AppConfig, res: Record<string, any>) => void)): void {
-            const { confirm = false, success, beforeSend, payload } = op;
+            const { confirm = false, deleteConfirm = false, success, beforeSend, payload } = op;
             if ((success?.type === 'load_html' && success?.reload) || success?.type === 'api_response') {
                 const { target = 'none' } = success || {};
                 if (target !== 'none') {
                     $(`#${target}`).html('');
                 }
             }
-            if (confirm) {
+            if (deleteConfirm) {
+                if (Config.app_env) {
+                    console.log("Payload for delete confirmation:", payload);
+                }
                 if (payload && typeof payload === 'object' && 'ids' in payload) {
                     Sweet.deleteConfirm({ item: payload.ids }).then((result) => {
                         if (!result.isConfirmed) return;
@@ -36,16 +39,20 @@ export class Http {
                             this.response(op, res, callBack);
                         });
                     });
-                    return;
-                } else {
-                    Sweet.confirm().then((result) => {
-                        if (!result.isConfirmed) return;
-                        this.core(op, (op, res) => {
-                            this.response(op, res, callBack);
-                        });
-                    });
-                    return;
                 }
+                return;
+            }
+            if (confirm) {
+                if (Config.app_env) {
+                    console.log("Payload for confirmation:", payload);
+                }
+                Sweet.confirm().then((result) => {
+                    if (!result.isConfirmed) return;
+                    this.core(op, (op, res) => {
+                        this.response(op, res, callBack);
+                    });
+                });
+                return;
             } else {
                 if (beforeSend) {
                     beforeSend(op, (op) =>

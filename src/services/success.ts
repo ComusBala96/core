@@ -1,7 +1,7 @@
 import { Api } from "datatables.net";
 import { Config } from "../app";
 import { AppConfig } from "../types";
-import { Sweet, Url } from "../utils";
+import { Form, Sweet, Url } from "../utils";
 
 export class Success {
     public op: AppConfig;
@@ -18,22 +18,30 @@ export class Success {
         }
         if (res?.tost) {
             Sweet.tost.success({ text: res?.data?.message, timer: 600, position: 'bottom-end', })
-            if (res?.reload) {
-                Url.resetTable(op.api as Api);
-            }
-            if (res?.data?.redirect) {
-                Url.redirectTimeout(res?.data?.redirect, res?.timeout ?? 1200);
-            }
+            this.handleTransaction(op, res);
         }
         if (res?.sweet) {
             Sweet.success({ text: res?.data?.message })
-            if (res?.reload) {
-                Url.resetTable(op.api as Api);
-            }
-            if (res?.data?.redirect) {
-                Url.redirectTimeout(res?.data?.redirect, res?.timeout ?? 1200);
-            }
+            this.handleTransaction(op, res);
         }
         return this;
+    }
+    static handleTransaction<T extends typeof Success>(this: T, op: AppConfig, res: Record<string, any>): void {
+        if (res?.reload) {
+            if (res?.data?.reload_timeout) {
+                Url.reloadTimeout(res?.data?.reload_timeout);
+            } else {
+                Url.reload();
+            }
+        }
+        if (res?.table_reload) {
+            Url.reloadTable(op.api as Api);
+        }
+        if (res?.data?.redirect) {
+            Url.redirectTimeout(res?.data?.redirect, res?.timeout ?? 1200);
+        }
+        if (res?.data?.reset && op.element) {
+            Form.reset(op?.element)
+        }
     }
 }
