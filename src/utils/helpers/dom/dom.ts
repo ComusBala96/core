@@ -86,16 +86,10 @@ export function closest(el: EventTarget | null, selector: string): HTMLElement |
  * }, true);
  * @return void.
  */
-export function on(event: string, selector: string, handler: (e: Event, target: HTMLElement) => void | Promise<void>, options?: boolean | AddEventListenerOptions) {
-    document.addEventListener(
-        event,
-        async (e) => {
-            const target = closest(e.target, selector);
-            if (!target) return;
-            await handler(e, target);
-        },
-        options,
-    );
+export function on(event: string, element: string, callback: (e: JQuery.TriggeredEvent, element: HTMLElement) => void) {
+    $(document).on(event, element, function (e) {
+        callback(e, this as HTMLElement);
+    });
 }
 
 

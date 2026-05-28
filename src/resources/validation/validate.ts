@@ -24,11 +24,11 @@ export function validate(op: AppConfig, callBack: undefined | ((op: AppConfig, r
             }
             error.insertAfter(el);
         },
-        highlight(el: HTMLFormElement) {
-            $(el).addClass('border-yellow-400 placeholder:text-red-600 focus:border-yellow-400').removeClass('border-stroke placeholder:text-black focus:border-primary');
+        highlight(element: HTMLElement) {
+            $(element).removeClass('border-stroke focus:border-primary placeholder:text-black').addClass('border-yellow-400 focus:border-yellow-400 placeholder:text-red-600');
         },
-        unhighlight(el: HTMLFormElement) {
-            $(el).addClass('border-stroke placeholder:text-black focus:border-primary').removeClass('border-yellow-400 placeholder:text-red-600 focus:border-yellow-400');
+        unhighlight(element: HTMLElement) {
+            $(element).removeClass('border-yellow-400 focus:border-yellow-400 placeholder:text-red-600').addClass('border-stroke focus:border-primary placeholder:text-black');
         },
         submitHandler(form: HTMLFormElement) {
             if (afterValidation) {

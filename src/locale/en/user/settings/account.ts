@@ -11,8 +11,7 @@ export const en_user_settings_account: Record<string, any> = {
         "tag": "Start for free"
     },
     "label": {
-        "name": "Name (English)",
-        "name_bn": "Name (Bangla)",
+        "name": "Name",
         "email": "Email",
         "phone": "Phone",
         "about": "About Me",

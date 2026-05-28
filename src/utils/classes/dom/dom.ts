@@ -1,4 +1,4 @@
-import { closest, getElementByClass, getElementById, on, querySelector, querySelectorAll } from '../../helpers';
+import { closest, getElementByClass, getElementById, querySelector, on, querySelectorAll } from '../../helpers';
 
 export class Dom {
     static getElementById(id: string): JQuery<HTMLElement> | HTMLFormElement {
@@ -21,7 +21,7 @@ export class Dom {
         return closest(el, selector);
     }
 
-    static on(event: string, selector: string, handler: (e: Event, target: HTMLElement) => void | Promise<void>, options?: AddEventListenerOptions) {
-        return on(event, selector, handler, options);
+    static event(event: string, element: string, callback: (e: JQuery.TriggeredEvent, element: HTMLElement) => void) {
+        return on(event, element, callback);
     }
 }

@@ -164,8 +164,8 @@ export class App {
         this.bootPlugin(this.config);
         return this;
     }
-    static event<T extends typeof App>(this: T, event: string, selector: string, handler: (e: Event, target: HTMLElement) => void | Promise<void>, options?: AddEventListenerOptions): T {
-        Dom.on(event, selector, handler, options);
+    static event<T extends typeof App>(this: T, event: string, element: string, callback: (e: JQuery.TriggeredEvent, element: HTMLElement) => void): T {
+        Dom.event(event, element, callback);
         return this;
     }
     static legacy<T extends typeof App>(this: T, config: AppConfig, callback: Function): T {
