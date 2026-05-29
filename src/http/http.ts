@@ -72,12 +72,39 @@ export class Http {
                 callBack(op, res);
                 return;
             }
-            if (res.success) {
-                Success.handle(op, res);
-            } else {
-                Errors.handle(op, res);
+            if (res) {
+                switch (res?.type) {
+                    case 'success':
+                        Success.handle(op, res);
+                        break;
+                    case 'error':
+                        Errors.handle(op, res);
+                        break;
+                    case 'warning':
+                        Errors.handle(op, res);
+                        break;
+                    case 'noUpdate':
+                        Success.handle(op, res);
+                        break;
+                    case 'wrong':
+                        Errors.handle(op, res);
+                        break;
+                    case 'bigErrors':
+                        Errors.handle(op, res);
+                        break;
+                    case 'noData':
+                        Errors.handle(op, res);
+                        break;
+                    case 'validation':
+                        Errors.handle(op, res);
+                        break;
+                    case 'load_html':
+                        Success.handle(op, res);
+                        break;
+                    default:
+                        break;
+                }
             }
-
         },
         core(op: AppConfig, callBack: (op: AppConfig, res: Record<string, any>) => void) {
             const { url = '/', payload = {}, method = 'POST', dataType = 'form', loader = true, token = null } = op;
