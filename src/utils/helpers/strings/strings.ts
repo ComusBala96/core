@@ -162,3 +162,7 @@ export function getParamName(segment: string): string | null {
 export function normalizeName(name: string): string {
     return name.trim().toLowerCase().replace(/\s+/g, '_').replace(/[^\w]/g, '');
 }
+
+export function getSelector(selector: string): string {
+    return /^[#.]/.test(selector.trim()) ? selector.trim() : `#${selector.trim()}`;
+}

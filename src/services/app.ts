@@ -11,9 +11,12 @@ export class App {
     static tableConfig: AppConfig = {};
     static createConfig: AppConfig = {};
     static deleteConfig: AppConfig = {};
+    static bulkDeleteConfig: AppConfig = {};
     static updateConfig: AppConfig = {};
+    static bulkUpdateConfig: AppConfig = {};
     static pdfConfig: PdfConfig = {};
     static excelConfig: ExcelConfig = {};
+    static dataTableApi: Api<any>;
     static beforeSuccessHandler?: undefined | ((op: AppConfig, res: Record<string, any>) => void);
     static successHandler?: undefined | ((op: AppConfig, res: Record<string, any>) => void);
     static afterSuccessHandler?: undefined | ((op: AppConfig, res: Record<string, any>) => void);
@@ -52,12 +55,15 @@ export class App {
                 Crud.downloadExcel({ ...op, ...this.excelConfig } as DownloadExcelOptions);
             }
             // BULK Update
-            if (this.updateConfig?.element && Guard.domElement(this.updateConfig?.element)) {
-                Crud.bulkUpdate({ ...this.updateConfig, api });
+            if (this.bulkUpdateConfig?.element && Guard.domElement(this.bulkUpdateConfig?.element)) {
+                Crud.bulkUpdate({ ...this.bulkUpdateConfig, api });
             }
             // BULK Delete
-            if (this.deleteConfig?.element && Guard.domElement(this.deleteConfig?.element)) {
-                Crud.bulkDelete({ ...this.deleteConfig, api });
+            if (this.bulkDeleteConfig?.element && Guard.domElement(this.bulkDeleteConfig?.element)) {
+                Crud.bulkDelete({ ...this.bulkDeleteConfig, api });
+            }
+            if (api) {
+                this.dataTableApi = api;
             }
         };
     }
@@ -128,11 +134,11 @@ export class App {
         return this;
     }
     static bulkUpdate<T extends typeof App>(this: T, config: AppConfig): T {
-        this.updateConfig = config;
+        this.bulkUpdateConfig = config;
         return this;
     }
     static bulkDelete<T extends typeof App>(this: T, config: AppConfig): T {
-        this.deleteConfig = config;
+        this.bulkDeleteConfig = config;
         return this;
     }
     static downloadPdf<T extends typeof App>(this: T, config: PdfConfig): T {
@@ -143,19 +149,19 @@ export class App {
         this.excelConfig = config;
         return this;
     }
-    static beforeSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: unknown) => void): T {
+    static beforeSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: Record<string, any>) => void): T {
         this.beforeSuccessHandler = callback;
         return this;
     }
-    static success<T extends typeof App>(this: T, callback: (op: AppConfig, res: unknown) => void): T {
+    static success<T extends typeof App>(this: T, callback: (op: AppConfig, res: Record<string, any>) => void): T {
         this.successHandler = callback;
         return this;
     }
-    static onSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: unknown) => void): T {
+    static onSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: Record<string, any>) => void): T {
         this.successHandler = callback;
         return this;
     }
-    static afterSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: unknown) => void): T {
+    static afterSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: Record<string, any>) => void): T {
         this.afterSuccessHandler = callback;
         return this;
     }
@@ -169,7 +175,7 @@ export class App {
         return this;
     }
     static legacy<T extends typeof App>(this: T, config: AppConfig, callback: Function): T {
-        const { } = config;
+        const {} = config;
         callback();
         return this;
     }

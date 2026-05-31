@@ -1,10 +1,9 @@
 import { error, xhrError } from '../alerts';
 import { Config, Lang } from '../../../app';
 import { inflateRequire } from '../success/inflate';
-import { hideLoader, jsonShow, showErrors } from '../loader/loader';
+import { hideLoader, jsonShow } from '../loader/loader';
 import { AppConfig } from '../../../types';
-
-
+import { Loader, Obj, Str, Sweet } from '../../classes';
 
 /**
  * Server Error.
@@ -23,10 +22,22 @@ export function validateErrors(errors: Record<string, string[]>) {
         $(id).addClass('text-red-600').html(errors[k][0]);
     }
 }
+export function bigErrors(res: Record<string, any[]>) {
+    if (res.bigError) {
+        let html = `<div style="margin-bottom:10px;font-size:14px;font-weight:300;">
+            <ul style="padding-left:20px;display:flex;flex-direction:column;gap:2">
+            <li style="color:red;">${Lang.alerts.went_wrong}</li>`;
+        res.errors?.forEach((e) => {
+            html += `<li style="color:red;text-decoration:none;">${e}</li>`;
+        });
+        html += '</ul></div>';
+        Loader.displayErrors('showErrors', html);
+    }
+}
 
 export function noUpdate(op: AppConfig): void {
-    const { response = {} } = op;
-    xhrError({ html: response.title });
+    const { res = {} } = op;
+    xhrError({ html: res.message });
 }
 
 export function xhrErrors(xhr: any) {
@@ -44,7 +55,7 @@ export function xhrErrors(xhr: any) {
         }
     }
     if (status == 422) {
-        const res = JSON.parse(responseText);
+        const res = Obj.jsonParse(responseText);
         if (res?.errors !== undefined) {
             let errorHtml = '<ul class="text-danger text-start text-xs" style="margin-left: 1rem;">';
             for (const field in res.errors) {
@@ -61,42 +72,37 @@ export function xhrErrors(xhr: any) {
     }
 }
 
-
 export function displayAllErrors(op: AppConfig): void {
-    const { response = {}, page = 'addPage', server = false } = op;
+    const { res = {}, page = 'addPage', server = false } = op;
     const err = Lang.errors.inflate_error;
     const bigErr = Lang.errors.action_error;
     if (server) {
         $('#defaultPage').addClass('block').removeClass('hidden');
-        $('#' + page)
-            .addClass('hidden')
-            .removeClass('block');
+        $(Str.getSelector(page)).addClass('hidden').removeClass('block');
     }
-    if (response.bigError) {
+    if (res.bigError) {
         let html = `<div style="margin-bottom:10px;font-size:14px;font-weight:300;">
             <ul style="padding-left:20px;display:flex;flex-direction:column;gap:2">
             <li style="color:red;">${bigErr}</li>`;
 
-        response.bigErrors?.forEach((e: HTMLElement) => {
+        res.bigErrors?.forEach((e: HTMLElement) => {
             html += `<li style="color:red;text-decoration:none;">${e}</li>`;
         });
 
         html += '</ul></div>';
-        showErrors('showErrors', html);
+        Loader.displayErrors('showErrors', html);
         inflateRequire(Lang.errors.action_error);
         hideLoader('theGlobalLoader');
     } else {
-        if (response.noUpdate) {
+        if (res.noUpdate) {
             hideLoader('theGlobalLoader');
             noUpdate(op);
         } else {
-            jsonShow(response.errors || {});
+            jsonShow(res.errors || {});
             hideLoader('theGlobalLoader');
-            if (!response.partial) {
-                inflateRequire(response.msg ? `${err}<br>${response.msg}` : err);
+            if (!res.partial) {
+                inflateRequire(res.msg ? `${err}<br>${res.msg}` : err);
             }
         }
     }
 }
-
-

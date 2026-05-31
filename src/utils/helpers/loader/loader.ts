@@ -7,7 +7,7 @@ export function hideLoader(id: string): void {
     const el = getElementById(id);
     el.removeClass('activeGlobalLoader').css({ display: 'none' });
 }
-export function showErrors(id: string, html: string): void {
+export function displayErrors(id: string, html: string): void {
     const el = getElementById(id);
     el.html(html);
     $('#errorBase').addClass('activateErrors').fadeIn(500);

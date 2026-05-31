@@ -3,6 +3,7 @@ import {
     escapeHtml,
     getNestedValue,
     getParamName,
+    getSelector,
     join,
     kebab,
     limit,
@@ -94,5 +95,8 @@ export class Str {
     }
     static normalizeName(name: string): string {
         return normalizeName(name);
+    }
+    static getSelector(selector: string): string {
+        return getSelector(selector);
     }
 }

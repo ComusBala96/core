@@ -16,7 +16,9 @@ export const en_alerts: Record<string, any> = {
     "verify": "Email verified successfully, redirecting shortly.",
     "bigError": ":exists :denied already in use in :in, can not be deleted.",
     "success_otp": "OTP Send Successfully, Please Verify Now!",
+    "failed": "Validation failed!",
     "success_password": "Password Send Successfully, Please Login with New Credentials!",
+    "download": "Creating Document, Do not close this window...",
     "sweet": {
         "ok": "OK",
         "cancel": "Cancel",

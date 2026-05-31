@@ -1,26 +1,26 @@
 import { Lang } from '../app';
 import { Ajax } from '../services/ajax';
 import { AppConfig, RowData } from '../types';
-import { Guard, Obj, Sweet } from '../utils';
+import { Guard, Obj, Str, Sweet } from '../utils';
 import { getSelectedTableData, getUpdatedTableData } from './plugins/datatable';
 
 export function bulkUpdate(op: AppConfig = {}) {
     const { element = '', confirm = true, api, dataType = 'json', payload = {}, updateCols = false } = op;
-    if (Guard.hasElement(element)) {
-        $('#' + element)
+    if (Guard.domElement(element)) {
+        $(Str.getSelector(element))
             .off('click')
             .on('click', () => {
                 let data = getUpdatedTableData(element, api, updateCols);
                 data = Obj.mergePayload(data, payload);
-                Ajax.post(Obj.merge(op, { payload: data, dataType, confirm}));
+                Ajax.post(Obj.merge(op, { payload: data, dataType, confirm }));
             });
     }
 }
 
 export function bulkDelete(op: AppConfig) {
     const { element = '', deleteConfirm = true, api, dataType = 'json', tableLoadType = 'ajax', payload = {} } = op;
-    if (Guard.hasElement(element)) {
-        $('#' + element)
+    if (Guard.domElement(element)) {
+        $(Str.getSelector(element))
             .off('click')
             .on('click', function () {
                 const selected = api.rows('.selected').data().toArray() as RowData[];

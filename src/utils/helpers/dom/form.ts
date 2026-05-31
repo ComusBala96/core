@@ -2,7 +2,6 @@ import { Config } from '../../../app';
 import { AppConfig } from '../../../types';
 import { getElementById } from './dom';
 
-
 export function getFormData(op: AppConfig): FormData | Record<string, any> {
     const { form = null, payload = {} } = op;
     const csrf_token = Config.csrf_token;
@@ -33,5 +32,8 @@ export function getFormData(op: AppConfig): FormData | Record<string, any> {
 
 export function resetForm(formId: string) {
     const form = getElementById(formId).get(0) as HTMLFormElement;
+    if (Config.app_env) {
+        console.log('Form:', form);
+    }
     if (form) form.reset();
 }

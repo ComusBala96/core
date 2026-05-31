@@ -1,30 +1,82 @@
-import { Api } from "datatables.net";
-import { Config } from "../app";
-import { AppConfig } from "../types";
-import { Form, Sweet, Url } from "../utils";
+import { Api } from 'datatables.net';
+import { Config } from '../app';
+import { AppConfig } from '../types';
+import { Form, Guard, Str, Sweet, Toastr, Url } from '../utils';
 
 export class Success {
-    public op: AppConfig;
-    public res: Record<string, any>;
-    constructor(op: AppConfig, res: Record<string, any>) {
-        this.op = op;
-        this.res = res;
-    }
-
-    static handle<T extends typeof Success>(this: T, op: AppConfig, res: Record<string, any>): T {
+    static handle<T extends typeof Success>(this: T, op: AppConfig, res: Record<string, any>): void {
         if (Config.app_env) {
-            console.log('success op', op);
-            console.log('success response', res);
+            console.log('success options:', op);
+            console.log('success response:', res);
         }
+        switch (res?.type) {
+            case 'success':
+                this.success(op, res);
+                break;
+            case 'warning':
+                this.warning(op, res);
+                break;
+            case 'noUpdate':
+                this.noUpdate(op, res);
+                break;
+            case 'load_view':
+                this.load_view(op, res);
+                break;
+            default:
+                this.warning(op, res);
+                break;
+        }
+        return;
+    }
+    static success<T extends typeof Success>(this: T, op: AppConfig, res: Record<string, any>): void {
         if (res?.tost) {
-            Sweet.tost.success({ text: res?.data?.message, timer: 600, position: 'bottom-end', })
+            Sweet.tost.success({ text: res?.message, timer: 600, position: 'bottom-end' });
             this.handleTransaction(op, res);
         }
         if (res?.sweet) {
-            Sweet.success({ text: res?.data?.message })
+            Sweet.success({ text: res?.message });
             this.handleTransaction(op, res);
         }
-        return this;
+        if (res?.toastr) {
+            Toastr.success(res?.message);
+            this.handleTransaction(op, res);
+        }
+    }
+    static warning<T extends typeof Success>(this: T, op: AppConfig, res: Record<string, any>): void {
+        if (res?.tost) {
+            Sweet.tost.warning({ text: res?.message, timer: 600, position: 'bottom-end' });
+            this.handleTransaction(op, res);
+        }
+        if (res?.sweet) {
+            Sweet.warning({ text: res?.data?.message });
+            this.handleTransaction(op, res);
+        }
+        if (res?.toastr) {
+            Toastr.warning(res?.data?.message);
+            this.handleTransaction(op, res);
+        }
+    }
+    static noUpdate<T extends typeof Success>(this: T, op: AppConfig, res: Record<string, any>): void {
+        if (res?.tost) {
+            Sweet.tost.success({ html: res?.message, timer: 600, position: 'bottom-end' });
+            this.handleTransaction(op, res);
+        }
+        if (res?.sweet) {
+            Sweet.success({ html: res?.message });
+            this.handleTransaction(op, res);
+        }
+        if (res?.toastr) {
+            Toastr.success($(res?.message).text());
+            this.handleTransaction(op, res);
+        }
+    }
+    static load_view<T extends typeof Success>(this: T, op: AppConfig, res: Record<string, any>): void {
+        if (op?.success?.load_view && typeof op?.success?.target === 'string' && Guard.domElement(op?.success?.target)) {
+            if (res?.view) {
+                $(Str.getSelector(op?.success?.target)).html(res?.view);
+            }
+        }
+        this.success(op, res);
     }
     static handleTransaction<T extends typeof Success>(this: T, op: AppConfig, res: Record<string, any>): void {
         if (res?.reload) {
@@ -34,14 +86,18 @@ export class Success {
                 Url.reload();
             }
         }
-        if (res?.table_reload) {
-            Url.reloadTable(op.api as Api);
+        if (res?.reload_table && op?.api) {
+            Url.reloadTable(op?.api as Api<any>);
         }
         if (res?.data?.redirect) {
-            Url.redirectTimeout(res?.data?.redirect, res?.timeout ?? 1200);
+            if (res?.data?.redirect_timeout || res?.toastr || res?.tost) {
+                Url.redirectTimeout(res?.data?.redirect, res?.data?.redirect_timeout ?? 1200);
+            } else {
+                Url.redirect(res?.data?.redirect);
+            }
         }
-        if (res?.data?.reset && op.element) {
-            Form.reset(op?.element)
+        if (res?.data?.reset && op?.element) {
+            Form.reset(op?.element);
         }
     }
 }

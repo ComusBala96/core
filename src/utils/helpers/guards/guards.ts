@@ -3,6 +3,7 @@
  */
 
 import { Lang } from '../../../app';
+import { Str } from '../../classes';
 import { error } from '../alerts';
 import { getElementById } from '../dom';
 
@@ -169,5 +170,5 @@ export function hasElement(id: string): boolean {
     return el.length > 0;
 }
 export function domElement(element: string): boolean {
-    return $('#' + element).length > 0;
+    return $(Str.getSelector(element)).length > 0;
 }

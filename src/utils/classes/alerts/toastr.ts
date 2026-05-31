@@ -6,8 +6,8 @@ export class Toastr {
     /**
      * Initialize toastr options
      */
-    static init(config: ToastrConfig = {}): void {
-        toastrInit(config);
+    static init(): void {
+        toastrInit();
     }
 
     /**

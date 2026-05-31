@@ -8,8 +8,9 @@ export type RequestDataType = 'form' | 'json';
 export interface AppSuccessConfig {
     reload?: boolean;
     type?: string;
-    load_html?: false;
+    load_view?: boolean;
     target?: string;
+    afterSuccess?: (op: AppConfig, res: Record<string, any>) => void;
     [key: string]: any;
 }
 export interface AppPlugins {
@@ -27,8 +28,8 @@ export interface AppPlugins {
 export interface AppConfig {
     element?: string | undefined;
     plugins?: AppPlugins;
-    confirm?: false;
-    validation?: true;
+    confirm?: boolean;
+    validation?: boolean;
     rules?: Record<string, Record<string, Record<string, any>>>;
     type?: RequestType;
     method?: HttpMethod;
@@ -38,7 +39,12 @@ export interface AppConfig {
     token?: string;
     success?: AppSuccessConfig;
     updateCols?: UpdateColsOption;
-    beforeSend?: (op: AppConfig, callBack: (op: AppConfig) => void) => void;
+    beforeSend?: (op: AppConfig) => void;
+    afterSend?: (op: AppConfig, res: Record<string, any>) => void;
+    title?: string;
+    modalCallback?: undefined;
+    globLoader?: boolean;
+    table?: string;
     [key: string]: any;
 }
 export interface PdfConfig {
@@ -51,4 +57,3 @@ export interface ExcelConfig {
     dataTable?: boolean;
     [key: string]: any;
 }
-

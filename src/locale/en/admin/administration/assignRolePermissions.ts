@@ -1,17 +1,21 @@
 export const en_admin_administration_assignRolePermissions: Record<string, any> = {
-    "title": "Admin |  Users |  Role | Permissions",
+    "title": "Admin |  Assign |  Role | Permissions",
     "breadcrumbs": {
         "b1": {
             "name": "Admin",
             "url": "admin/dashboard"
         },
         "b2": {
-            "name": "Users",
-            "url": ""
+            "name": "Role",
+            "url": "admin/roles"
         },
         "b3": {
-            "name": "Role Permissions",
-            "url": "admin/users/manage/role/permission"
+            "name": "Permissions",
+            "url": "admin/permissions"
+        },
+        "b4": {
+            "name": "Assign Permissions",
+            "url": "admin/assign/roles/permissions"
         }
     },
     "text": {

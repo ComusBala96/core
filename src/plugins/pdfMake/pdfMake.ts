@@ -4,9 +4,10 @@ import fontContainer from './vfs_fonts';
 import { MakePdfOptions } from '../../types';
 import { Config } from '../../app';
 import { addCustomFonts, addCustomTableLayouts, htmlToPdfMake } from '../../resources';
+import { Loader } from '../../utils';
 
 export async function MakePdf(op: MakePdfOptions) {
-    const { file_name = 'file_name', id = 'pdf', url, payload = {}, pdfFonts = [], tableLayouts = [] } = op;
+    const { file_name = 'file_name', id = 'pdf', url, payload = {}, pdfFonts = [], tableLayouts = [], globLoader = true } = op;
 
     try {
         const pdfMake: typeof import('pdfmake') = await getPdfMake();
@@ -26,27 +27,32 @@ export async function MakePdf(op: MakePdfOptions) {
         addCustomFonts(pdfMake, pdfFonts);
         addCustomTableLayouts(pdfMake, tableLayouts);
 
-        $('#theDownloadLoader').show();
+        if (globLoader) {
+            Loader.show('theDownloadLoader');
+        }
 
         pdfMake
             .createPdf(docDefinition)
             .download(`${file_name}.pdf`)
             .then(() => {
-                $('#theDownloadLoader').hide();
+                if (globLoader) {
+                    Loader.hide('theDownloadLoader');
+                }
                 if (url) {
-                    Http.ajax.make({
+                    Http.ajax.send({
                         element: id,
                         url,
                         payload,
                         dataType: 'json',
                         type: 'request',
-                        afterSuccess: { type: 'inflate_response_data' },
                     });
                 }
             });
     } catch (e) {
         console.error('PDF generation', e);
-        $('#theDownloadLoader').hide();
+        if (globLoader) {
+            Loader.hide('theDownloadLoader');
+        }
     }
 }
 

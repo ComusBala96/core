@@ -4,6 +4,7 @@
 
 import { makeExcel, MakePdf } from '../plugins';
 import { DownloadExcelOptions, MakePdfOptions } from '../types';
+import { Loader, Obj, Str } from '../utils';
 
 export function downloadPdf(op: MakePdfOptions) {
     try {
@@ -11,7 +12,7 @@ export function downloadPdf(op: MakePdfOptions) {
         if (typeof btn !== 'string' || btn.trim() === '') {
             throw new Error('Invalid "btn". Expected non-empty string');
         }
-        const $el = $('#' + btn); // allow any selector
+        const $el = $(Str.getSelector(btn)); // allow any selector
         if ($el.length === 0) {
             throw new Error(`Element not found for selector: ${btn}`);
         }
@@ -24,7 +25,7 @@ export function downloadPdf(op: MakePdfOptions) {
                     }
                     let extra: Record<string, any> = {};
                     try {
-                        extra = JSON.parse(attr);
+                        extra = Obj.jsonParse(attr);
                     } catch {
                         throw new Error(`Invalid JSON in data-pdf-op: ${attr}`);
                     }
@@ -44,16 +45,29 @@ export function downloadPdf(op: MakePdfOptions) {
 ----------------------------- */
 
 export function downloadExcel(op: DownloadExcelOptions = {}): void {
-    const btn = op.btn ?? 'excelDownload';
-    const $btn = $('#' + btn);
+    const { btn = 'excelDownload' } = op;
+
+    const $btn = $(Str.getSelector(btn));
     $btn.off('click');
     $btn.on('click', async function (this: HTMLElement) {
         const dataset = $(this).attr('data-excel-op');
-        const parsed = dataset ? JSON.parse(dataset) : {};
-        const newOp: DownloadExcelOptions = {
-            ...op,
-            ...parsed,
-        };
-        await makeExcel(newOp);
+        const parsed: Record<string, any> = dataset ? Obj.jsonParse(dataset) : {};
+        const newOp: DownloadExcelOptions = Obj.merge(op, parsed);
+        const { globLoader = true } = newOp;
+        if (globLoader) {
+            Loader.show('theDownloadLoader');
+        }
+        try {
+            await makeExcel(newOp).then(() => {
+                if (globLoader) {
+                    Loader.hide('theDownloadLoader');
+                }
+            });
+        } catch (e) {
+            console.log('Excel generation:', e);
+            if (globLoader) {
+                Loader.hide('theDownloadLoader');
+            }
+        }
     });
 }

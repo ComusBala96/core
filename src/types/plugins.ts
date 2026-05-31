@@ -109,6 +109,7 @@ export interface DownloadExcelOptions {
     columns?: any[];
     pdf?: number[];
     filterColumn?: any[];
+    globLoader?: boolean;
 }
 
 // Jodit Types
@@ -169,6 +170,7 @@ export interface MakePdfOptions {
     header?: DynamicContent | Content | undefined;
     footer?: DynamicContent | Content | undefined;
     bodyStyles?: Record<string, any>;
+    globLoader?: boolean;
     [key: string]: any;
 }
 export interface CustomFont {

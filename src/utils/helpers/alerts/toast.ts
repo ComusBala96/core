@@ -13,11 +13,11 @@ export const toastrConfig: ToastrConfig = {
     progressBar: true,
     newestOnTop: true,
     preventDuplicates: true,
-    timeOut: 3000,
+    timeOut: 600,
     extendedTimeOut: 1000,
-    positionClass: 'toast-bottom-right',
+    positionClass: 'toast-top-right',
     showDuration: 300,
-    hideDuration: 300,
+    hideDuration: 600,
     showMethod: 'fadeIn',
     hideMethod: 'fadeOut',
 };
@@ -25,50 +25,47 @@ export const toastrConfig: ToastrConfig = {
 /**
  * Initialize toastr options
  */
-export function toastrInit(config: ToastrConfig = {}): void {
-    toastr.options = {
-        ...toastrConfig,
-        ...config,
-    };
+export function toastrInit(): void {
+    toastr.options = toastrConfig;
 }
 
 /**
  * Reset to default config
  */
 export function toastrReset(): void {
-    toastrInit(toastrConfig);
+    toastrInit();
 }
 
 /**
  * Success toast
  */
 export function toastrSuccess(message: string, title = 'Success', config: ToastrConfig = {}): void {
-    toastrInit(config);
-    toastr.success(message, title);
+    toastrInit();
+    toastr.success(message, title, config);
 }
 
 /**
  * Error toast
  */
 export function toastrError(message: string, title = 'Error', config: ToastrConfig = {}): void {
-    toastrInit(config);
-    toastr.error(message, title);
+    toastrInit();
+    toastr.error(message, title, config);
 }
 
 /**
  * Warning toast
  */
 export function toastrWarning(message: string, title = 'Warning', config: ToastrConfig = {}): void {
-    toastrInit(config);
-    toastr.warning(message, title);
+    toastrInit();
+    toastr.warning(message, title, config);
 }
 
 /**
  * Info toast
  */
 export function toastrInfo(message: string, title = 'Info', config: ToastrConfig = {}): void {
-    toastrInit(config);
-    toastr.info(message, title);
+    toastrInit();
+    toastr.info(message, title, config);
 }
 
 /**

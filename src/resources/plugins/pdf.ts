@@ -184,7 +184,7 @@ export function htmlToPdfMake(op: MakePdfOptions) {
 
         if (styleAttr) {
             try {
-                styles = JSON.parse(styleAttr);
+                styles = Obj.jsonParse(styleAttr);
             } catch (e) {
                 console.warn('Invalid watermark style JSON');
             }
@@ -207,13 +207,13 @@ export function htmlToPdfMake(op: MakePdfOptions) {
     };
 }
 
-export const parseJSON = (value: string | null, fallback = {}) => {
-    try {
-        return value ? JSON.parse(value) : fallback;
-    } catch {
-        return fallback;
-    }
-};
+// export const parseJSON = (value: string | null, fallback = {}) => {
+//     try {
+//         return value ? Obj.jsonParse(value) : fallback;
+//     } catch {
+//         return fallback;
+//     }
+// };
 
 export function createDomObject(element: HTMLDivElement | null): any {
     if (!element) return { text: '', opacity: 0.2 };
@@ -250,10 +250,10 @@ export function createDomObject(element: HTMLDivElement | null): any {
     }
 
     const pdfAttr: string | null = element.getAttribute('data-pdf');
-    if (pdfAttr) obj.pdf = parseJSON(pdfAttr);
+    if (pdfAttr) obj.pdf = Obj.jsonParse(pdfAttr);
 
     const styleAttr = element.getAttribute('data-style');
-    if (styleAttr) obj = { ...obj, ...parseJSON(styleAttr) };
+    if (styleAttr) obj = { ...obj, ...Obj.jsonParse(styleAttr) };
 
     if (element.style.length) {
         const style: any = {};
@@ -279,7 +279,7 @@ export function sanitizeHtml(data: Element, className: string): HTMLDivElement {
 }
 
 export function getQrCodeObject(element: HTMLDivElement) {
-    const styles = parseJSON(element.getAttribute('data-style'));
+    const styles = Obj.jsonParse(element.getAttribute('data-style') || '{}');
 
     return {
         qr: element.getAttribute('data-qr-text')?.trim(),
@@ -289,7 +289,7 @@ export function getQrCodeObject(element: HTMLDivElement) {
 }
 
 export function getPageCount(element: HTMLDivElement) {
-    const styles = parseJSON(element.getAttribute('data-style'));
+    const styles = Obj.jsonParse(element.getAttribute('data-style') || '{}');
 
     return {
         text: '',
@@ -300,7 +300,7 @@ export function getPageCount(element: HTMLDivElement) {
 }
 
 export function getInlineText(element: HTMLDivElement) {
-    const styles = parseJSON(element.getAttribute('data-style'));
+    const styles = Obj.jsonParse(element.getAttribute('data-style') || '{}');
 
     const innerText = element.innerHTML;
 
@@ -312,7 +312,7 @@ export function getInlineText(element: HTMLDivElement) {
 
     for (let i = 0; i < parts.length; i++) {
         if (i % 3 === 1) {
-            const style = parseJSON(parts[i].replace(/&quot;/g, '"'));
+            const style = Obj.jsonParse(parts[i].replace(/&quot;/g, '"'));
             const content = parts[i + 1];
 
             text.push({ style, text: content });
@@ -346,7 +346,7 @@ export function getImageObject(element: HTMLDivElement) {
 }
 
 export function getTableObject(element: HTMLDivElement) {
-    const tableObject = parseJSON(element.getAttribute('data-style'));
+    const tableObject = Obj.jsonParse(element.getAttribute('data-style') || '{}');
 
     const { layout = 'noBorders', headerRows } = tableObject;
 
@@ -372,14 +372,14 @@ export function getTableBodyContent(nodes: NodeListOf<ChildNode>) {
         node.childNodes.forEach((tr: any) => {
             if (tr.tagName !== 'TR') return;
 
-            const trStyles = parseJSON(tr.getAttribute('data-style'));
+            const trStyles = Obj.jsonParse(tr.getAttribute('data-style'));
 
             const columns: any[] = [];
 
             tr.childNodes.forEach((td: any) => {
                 if (!td || !['TH', 'TD'].includes(td.tagName)) return;
 
-                const styles = parseJSON(td.getAttribute('data-style'));
+                const styles = Obj.jsonParse(td.getAttribute('data-style'));
 
                 const css: any = {};
 
@@ -561,7 +561,7 @@ export function tableStack(rows: Record<string, any>, op: MakePdfOptions, images
                 const img = doc.querySelector('img');
                 const src = img?.getAttribute('src');
                 const style: string | null | undefined = img?.getAttribute('style');
-                const imageStyles = typeof style === 'string' && typeof style !== 'undefined' ? JSON.parse(style) : null;
+                const imageStyles = typeof style === 'string' && typeof style !== 'undefined' ? Obj.jsonParse(style) : null;
                 if (src) {
                     images[key] = src;
                     dataRow.push({

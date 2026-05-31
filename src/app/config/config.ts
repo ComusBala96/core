@@ -1,5 +1,5 @@
 import { UpdateCols } from '../../types';
-import { Dom } from '../../utils';
+import { Dom, Obj } from '../../utils';
 
 export class Config {
     /**
@@ -42,7 +42,7 @@ export class Config {
                 throw new Error('Config value is empty.');
             }
             try {
-                return JSON.parse(trimmed) as Record<string, any>;
+                return Obj.jsonParse(trimmed) as Record<string, any>;
             } catch {
                 throw new Error('Invalid JSON config.');
             }
@@ -207,7 +207,7 @@ export class Config {
      * return: media config object or {};
      */
     static get media(): Record<string, any> {
-        return this.media || {};
+        return this.all.media || {};
     }
 
     /**
@@ -249,7 +249,7 @@ export class Config {
      * return: meta image config object or {};
      */
     static get meta_image(): Record<string, any> {
-        return this.meta_image || {};
+        return this.all.meta_image || {};
     }
 
     /**
@@ -259,7 +259,7 @@ export class Config {
      * return: old paths config object or {};
      */
     static get old_paths(): Record<string, any> {
-        return this.old_paths || {};
+        return this.all.old_paths || {};
     }
 
     /**
@@ -269,6 +269,6 @@ export class Config {
      * return: paths config object or {};
      */
     static get paths(): Record<string, any> {
-        return this.paths || {};
+        return this.all.paths || {};
     }
 }
