@@ -19,10 +19,14 @@ export const en_admin_administration_permissions: Record<string, any> = {
         "title": "Users permission List"
     },
     "label": {
-        "name": "Permission"
+        "name": "Permission",
+        "guard_name": "Panel"
     },
     "placeholder": {
-        "name": "Enter permission name"
+        "name": "Enter permission name",
+        "guard_select": "Select Panel",
+        "guard_user": "User Panel",
+        "guard_admin": "Admin Panel"
     },
     "btns": {
         "add": "Add New Permission",
@@ -33,6 +37,7 @@ export const en_admin_administration_permissions: Record<string, any> = {
             "id": "ID",
             "serial": "Serial",
             "name": "Permission",
+            "guard_name": "Panel",
             "created_at": "Created",
             "action": "Actions"
         }

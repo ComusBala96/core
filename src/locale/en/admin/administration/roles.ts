@@ -19,10 +19,14 @@ export const en_admin_administration_roles: Record<string, any> = {
         "title": "Administration role List"
     },
     "label": {
-        "name": "Role"
+        "name": "Role",
+        "guard_name": "Panel"
     },
     "placeholder": {
-        "name": "Enter role name"
+        "name": "Enter role name",
+        "guard_select": "Select Panel",
+        "guard_user": "User Panel",
+        "guard_admin": "Admin Panel"
     },
     "btns": {
         "add": "Add New Role",
@@ -34,6 +38,7 @@ export const en_admin_administration_roles: Record<string, any> = {
             "serial": "Serial",
             "name": "Role",
             "permissions": "Permissions",
+            "guard_name": "Panel",
             "created_at": "Created",
             "action": "Actions"
         }
