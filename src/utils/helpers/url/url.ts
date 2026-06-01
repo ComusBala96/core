@@ -4,6 +4,7 @@
 import { Api } from 'datatables.net';
 import { Config } from '../../../app';
 import { normalize } from '../strings/strings';
+import { Str } from '../../classes';
 
 /**
  * Get current url.
@@ -42,5 +43,9 @@ export function redirect(path: string | null): void {
 }
 
 export function reloadTable(api: Api): void {
-    api.ajax.reload();
+    if (api) {
+        $(Str.getSelector('show_selected')).html('');
+        $(Str.getSelector('show_selected_base')).addClass('hidden');
+        api.ajax.reload();
+    }
 }

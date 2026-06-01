@@ -74,7 +74,7 @@ export class Errors {
         this.wrong(op, res);
     }
     static validation(op: AppConfig, res: Record<string, any>) {
-        if (res?.errors && !op?.validation) {
+        if (res?.errors && op) {
             Loader.showErrors(res?.errors);
         }
     }

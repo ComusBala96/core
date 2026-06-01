@@ -5,6 +5,7 @@ export const en_alerts: Record<string, any> = {
     "update": "Updated successfully!",
     "delete": "Deleted successfully!",
     "went_wrong": "Something went wrong, try again.",
+    "system_error": "System catch error, please see the system_errors log for more details.",
     "no_changes": "You made no changes.",
     "not_found": "Item not found, try again.",
     "no_user": "No user found, try again.",

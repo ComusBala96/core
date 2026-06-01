@@ -1,4 +1,4 @@
-import { displayErrors, hideLoader, jsonShow, showLoader } from '../../helpers';
+import { displayErrors, hideLoader, validationShow, showLoader } from '../../helpers';
 
 export class Loader {
     static show(id: string = 'theGlobalLoader') {
@@ -8,7 +8,7 @@ export class Loader {
         return hideLoader(id);
     }
     static showErrors(errors: Record<string, string[]>) {
-        return jsonShow(errors);
+        return validationShow(errors);
     }
     static displayErrors(id: string, html: string) {
         return displayErrors(id, html);

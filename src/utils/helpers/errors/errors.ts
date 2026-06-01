@@ -1,9 +1,9 @@
 import { error, xhrError } from '../alerts';
 import { Config, Lang } from '../../../app';
 import { inflateRequire } from '../success/inflate';
-import { hideLoader, jsonShow } from '../loader/loader';
+import { hideLoader, validationShow } from '../loader/loader';
 import { AppConfig } from '../../../types';
-import { Loader, Obj, Str, Sweet } from '../../classes';
+import { Loader, Obj, Str } from '../../classes';
 
 /**
  * Server Error.
@@ -98,7 +98,7 @@ export function displayAllErrors(op: AppConfig): void {
             hideLoader('theGlobalLoader');
             noUpdate(op);
         } else {
-            jsonShow(res.errors || {});
+            validationShow(res.errors || {});
             hideLoader('theGlobalLoader');
             if (!res.partial) {
                 inflateRequire(res.msg ? `${err}<br>${res.msg}` : err);

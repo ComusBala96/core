@@ -1,3 +1,4 @@
+import { Config } from '../../../app';
 import { getElementById } from '../dom/dom';
 export function showLoader(id: string) {
     const el = getElementById(id);
@@ -13,10 +14,14 @@ export function displayErrors(id: string, html: string): void {
     $('#errorBase').addClass('activateErrors').fadeIn(500);
 }
 
-export function jsonShow(errors: Record<string, string[]>) {
+export function validationShow(errors: Record<string, string[]>) {
     for (const k in errors) {
+        if (Config.app_env) {
+            console.log('validation error key:', k);
+            console.log('validation error message:', errors[k][0]);
+        }
         const parts = k.split('.');
         const id = parts.length === 1 ? `#${k}_error` : `#${parts[0]}\\.${parts[1]}_error`;
-        $(id).addClass('text-red-600').html(errors[k][0]);
+        $(id).html(errors[k][0]);
     }
 }
