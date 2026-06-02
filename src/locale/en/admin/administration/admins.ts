@@ -6,21 +6,21 @@ export const en_admin_administration_admins: Record<string, any> = {
     },
     "breadcrumbs": {
         "b1": {
-            "name": "Admin",
+            "name": "Dashboard",
             "url": "admin/dashboard"
         },
         "b2": {
-            "name": "Users",
+            "name": "Manage",
             "url": ""
         },
         "b3": {
-            "name": "Administrator",
-            "url": "admin/users/administrator"
+            "name": "Administrators",
+            "url": "admin/create/view/administrator"
         }
     },
     "text": {
-        "download": "_users_administrator_list",
-        "title": "Users administrator List"
+        "download": "_administrator_list",
+        "title": "Administrators List"
     },
     "label": {
         "name": "Name",
@@ -36,8 +36,8 @@ export const en_admin_administration_admins: Record<string, any> = {
         "tiktok": "TikTok URL",
         "website": "Website URL",
         "current_password": "Current Password",
-        "password": "Password",
-        "password_confirmation": "Confirm Password"
+        "new_password": "New Password",
+        "confirm_password": "Confirm Password"
     },
     "placeholder": {
         "name": "Enter your full name",
@@ -53,12 +53,12 @@ export const en_admin_administration_admins: Record<string, any> = {
         "tiktok": "Enter TikTok URL",
         "website": "Enter Website URL",
         "current_password": "Enter your current password",
-        "password": "Enter your new password",
-        "password_confirmation": "Confirm your new password"
+        "new_password": "Enter your new password",
+        "confirm_password": "Confirm your new password"
     },
     "btns": {
         "add": "Add New Administrator",
-        "update": "Update Administrator"
+        "update": "Update Administrator Profile"
     },
     "table": {
         "col": {

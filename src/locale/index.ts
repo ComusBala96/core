@@ -1,6 +1,7 @@
 export { en_admin_administration_admins } from './en/admin/administration/admins';
 export { en_admin_administration_assignRolePermissions } from './en/admin/administration/assignRolePermissions';
-export { en_admin_administration_create } from './en/admin/administration/create';
+export { en_admin_administration_createAdmins } from './en/admin/administration/createAdmins';
+export { en_admin_administration_createUsers } from './en/admin/administration/createUsers';
 export { en_admin_administration_permissions } from './en/admin/administration/permissions';
 export { en_admin_administration_roles } from './en/admin/administration/roles';
 export { en_admin_administration_users } from './en/admin/administration/users';
@@ -24,5 +25,4 @@ export { en_site_home_home } from './en/site/home/home';
 export { en_site_profile_profile } from './en/site/profile/profile';
 export { en_user_dashboard_dashboard } from './en/user/dashboard/dashboard';
 export { en_user_settings_account } from './en/user/settings/account';
-export { en_user_users_users } from './en/user/users/users';
 export { en_validation } from './en/validation';

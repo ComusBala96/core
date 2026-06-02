@@ -1,9 +1,9 @@
 export const en_admin_settings_account: Record<string, any> = {
     "title": {
-        "settings": "User |  Account | Settings",
-        "social": "User |  Account | Social | Settings",
-        "password": "User |  Account | Password | Settings",
-        "two_factor": "User |  Account | Two Factor | Settings"
+        "settings": "Admin |  Account | Settings",
+        "social": "Admin |  Account | Social | Settings",
+        "password": "Admin |  Account | Password | Settings",
+        "two_factor": "Admin |  Account | Two Factor | Settings"
     },
     "text": {
         "2fa": "Verify Google Two Factor Authentication",
@@ -11,8 +11,7 @@ export const en_admin_settings_account: Record<string, any> = {
         "tag": "Start for free"
     },
     "label": {
-        "name": "Name (English)",
-        "name_bn": "Name (Bangla)",
+        "name": "Name",
         "email": "Email",
         "phone": "Phone",
         "about": "About Me",
@@ -32,7 +31,6 @@ export const en_admin_settings_account: Record<string, any> = {
     },
     "placeholder": {
         "name": "Enter Full English Name",
-        "name_bn": "Enter Full Bangla Name",
         "email": "Enter your email",
         "phone": "Enter your phone number",
         "about": "Write something yourself",

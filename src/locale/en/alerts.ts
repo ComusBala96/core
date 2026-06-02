@@ -15,7 +15,7 @@ export const en_alerts: Record<string, any> = {
     "login": "Successfully logged in, redirecting shortly.",
     "logout": "Successfully logged out from the system.",
     "verify": "Email verified successfully, redirecting shortly.",
-    "bigError": ":exists :denied already in use in :in, can not be deleted.",
+    "bigError": ":exists :denied is currently being used in :in and cannot be deleted.",
     "success_otp": "OTP Send Successfully, Please Verify Now!",
     "failed": "Validation failed!",
     "success_password": "Password Send Successfully, Please Login with New Credentials!",

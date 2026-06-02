@@ -6,16 +6,16 @@ export const en_admin_administration_users: Record<string, any> = {
     },
     "breadcrumbs": {
         "b1": {
-            "name": "Admin",
+            "name": "Dashboard",
             "url": "admin/dashboard"
         },
         "b2": {
-            "name": "Users",
+            "name": "Manage",
             "url": ""
         },
         "b3": {
             "name": "Users",
-            "url": "admin/users/manage/users"
+            "url": "admin/create/view/users"
         }
     },
     "text": {
@@ -36,8 +36,8 @@ export const en_admin_administration_users: Record<string, any> = {
         "tiktok": "TikTok URL",
         "website": "Website URL",
         "current_password": "Current Password",
-        "password": "Password",
-        "password_confirmation": "Confirm Password"
+        "new_password": "New Password",
+        "confirm_password": "Confirm Password"
     },
     "placeholder": {
         "name": "Enter your full name",
@@ -53,8 +53,8 @@ export const en_admin_administration_users: Record<string, any> = {
         "tiktok": "Enter TikTok URL",
         "website": "Enter Website URL",
         "current_password": "Enter your current password",
-        "password": "Enter your new password",
-        "password_confirmation": "Confirm your new password"
+        "new_password": "Enter your new password",
+        "confirm_password": "Confirm your new password"
     },
     "btns": {
         "add": "Add New Users",

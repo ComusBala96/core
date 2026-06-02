@@ -1,22 +1,22 @@
 export const en_admin_administration_roles: Record<string, any> = {
-    "title": "Admin |  Users |  Role",
+    "title": "Admin |  Manage |  Roles",
     "breadcrumbs": {
         "b1": {
-            "name": "Admin",
+            "name": "Dashboard",
             "url": "admin/dashboard"
         },
         "b2": {
-            "name": "Administration",
+            "name": "Manage",
             "url": ""
         },
         "b3": {
-            "name": "Role",
-            "url": "admin/roles"
+            "name": "Roles",
+            "url": "admin/assign/roles"
         }
     },
     "text": {
-        "download": "_administration_role_list",
-        "title": "Administration role List"
+        "download": "_roles_list",
+        "title": "Roles List"
     },
     "label": {
         "name": "Role",

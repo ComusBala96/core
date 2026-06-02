@@ -1,17 +1,17 @@
-export const en_admin_administration_create: Record<string, any> = {
-    "title": "Admin |  Users |  Manage",
+export const en_admin_administration_createUsers: Record<string, any> = {
+    "title": "Admin | Manage | Users",
     "breadcrumbs": {
         "b1": {
-            "name": "Admin",
+            "name": "Dashboard",
             "url": "admin/dashboard"
         },
         "b2": {
-            "name": "Users",
+            "name": "Manage",
             "url": ""
         },
         "b3": {
-            "name": "Manage",
-            "url": "admin/users/manage"
+            "name": "Users",
+            "url": "admin/create/users/client"
         }
     },
     "text": {
@@ -19,27 +19,19 @@ export const en_admin_administration_create: Record<string, any> = {
         "title": "Manage Users"
     },
     "label": {
-        "name": "Name (English)",
-        "name_bn": "Name (Bangla)",
+        "name": "Name",
         "email": "Email",
         "phone": "Phone",
         "password": "Password",
-        "password_confirmation": "Confirm Password",
-        "role": "Role",
-        "author": {
-            "name": "Author",
-            "employee": "Employee",
-            "yes": "Yes",
-            "no": "No"
-        }
+        "confirm_password": "Confirm Password",
+        "role": "Role"
     },
     "placeholder": {
         "name": "Enter Full English Name",
-        "name_bn": "Enter Full Bangla Name",
         "email": "Enter Email Address",
         "phone": "Enter Phone Number",
         "password": "Enter Password",
-        "password_confirmation": "Confirm your Password",
+        "confirm_password": "Confirm your Password",
         "role": "Select Role"
     },
     "btns": {
@@ -54,8 +46,6 @@ export const en_admin_administration_create: Record<string, any> = {
             "name": "Name",
             "role": "Role",
             "permissions": "Permissions",
-            "email": "Email",
-            "phone": "Phone",
             "created_at": "Created",
             "action": "Actions"
         }

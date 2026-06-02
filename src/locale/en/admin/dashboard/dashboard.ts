@@ -2,7 +2,7 @@ export const en_admin_dashboard_dashboard: Record<string, any> = {
     "title": "Admin | Manage | Dashboard",
     "breadcrumbs": {
         "b1": {
-            "name": "Admin",
+            "name": "Dashboard",
             "url": "admin/dashboard"
         }
     },

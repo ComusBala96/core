@@ -1,7 +1,6 @@
 export const en_site_profile_profile: Record<string, any> = {
     "title": {
-        "profile": "Profile",
-        "employee": "Employee"
+        "profile": "Profile"
     },
     "text": {
         "profile": "View Profile",

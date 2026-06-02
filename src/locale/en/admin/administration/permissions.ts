@@ -1,22 +1,22 @@
 export const en_admin_administration_permissions: Record<string, any> = {
-    "title": "Admin |  Users |  Permission",
+    "title": "Admin |  Manage |  Permissions",
     "breadcrumbs": {
         "b1": {
-            "name": "Admin",
+            "name": "Dashboard",
             "url": "admin/dashboard"
         },
         "b2": {
-            "name": "Users",
+            "name": "Manage",
             "url": ""
         },
         "b3": {
-            "name": "Permission",
-            "url": "admin/users/permission"
+            "name": "Permissions",
+            "url": "admin/assign/permissions"
         }
     },
     "text": {
-        "download": "_users_permission_list",
-        "title": "Users permission List"
+        "download": "_permissions_list",
+        "title": "Permissions List"
     },
     "label": {
         "name": "Permission",
