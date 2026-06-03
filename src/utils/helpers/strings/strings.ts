@@ -13,7 +13,19 @@ export function slug(value: string, separator = '-'): string {
         .replace(/[\s_-]+/g, separator)
         .replace(new RegExp(`^${separator}+|${separator}+$`, 'g'), '');
 }
-
+export function getExportValue(value: string | number): string | number {
+    if (typeof value !== 'string') {
+        return value;
+    }
+    if (value.includes('<img')) {
+        const doc = new DOMParser().parseFromString(value, 'text/html');
+        const img = doc.querySelector('img');
+        if (img?.src) {
+            return img.src;
+        }
+    }
+    return value;
+}
 /**
  * Make a camel case string.
  */

@@ -1,6 +1,7 @@
 import {
     camel,
     escapeHtml,
+    getExportValue,
     getNestedValue,
     getParamName,
     getSelector,
@@ -72,6 +73,10 @@ export class Str {
 
     static escapeHtml(value: unknown): string {
         return escapeHtml(value);
+    }
+
+    static getExportValue(value: string | number): string | number {
+        return getExportValue(value);
     }
 
     static getNestedValue(path: string, object: Record<string, any>): any {
