@@ -8,6 +8,7 @@ import { Config } from '../app';
 
 export class App {
     static config: AppConfig = {};
+    static pluginConfig: AppConfig = {};
     static tableConfig: AppConfig = {};
     static createConfig: AppConfig = {};
     static deleteConfig: AppConfig = {};
@@ -166,7 +167,7 @@ export class App {
         return this;
     }
     static plugins<T extends typeof App>(this: T, config: AppConfig): T {
-        this.config = config;
+        this.pluginConfig = config;
         this.bootPlugin(this.config);
         return this;
     }

@@ -6,7 +6,9 @@ export { en_admin_administration_permissions } from './en/admin/administration/p
 export { en_admin_administration_roles } from './en/admin/administration/roles';
 export { en_admin_administration_users } from './en/admin/administration/users';
 export { en_admin_dashboard_dashboard } from './en/admin/dashboard/dashboard';
+export { en_admin_navigation_page } from './en/admin/navigation/page';
 export { en_admin_settings_account } from './en/admin/settings/account';
+export { en_admin_settings_mail } from './en/admin/settings/mail';
 export { en_alerts } from './en/alerts';
 export { en_attributes } from './en/attributes';
 export { en_auth } from './en/auth';
