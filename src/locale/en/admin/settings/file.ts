@@ -1,5 +1,5 @@
 export const en_admin_settings_file: Record<string, any> = {
-    "title": "Admin |  Settings |  Configurations |  Mail",
+    "title": "Admin |  Settings |  Configurations |  File",
     "breadcrumbs": {
         "b1": {
             "name": "Admin",
@@ -14,38 +14,32 @@ export const en_admin_settings_file: Record<string, any> = {
             "url": ""
         },
         "b4": {
-            "name": "Email",
-            "url": "admin/settings/configurations/mail"
+            "name": "File",
+            "url": "admin/settings/configurations/file"
         }
     },
     "text": {
-        "title": "Email Configurations",
-        "email": "Email Config",
-        "google": "Google Config",
-        "analytic": "Analytic Config",
-        "datatable": "Datatable Config",
-        "image": "Image Config",
-        "video": "Video Config",
-        "file": "File Config"
+        "title": "File Configurations"
     },
     "label": {
-        "mail_mailer": "Email Mailer",
-        "mail_host": "Email Host",
-        "mail_port": "Email Port",
-        "mail_username": "Email Username",
-        "mail_password": "Email Password",
-        "mail_encryption": "Email Encryption",
-        "mail_from_address": "Email From Address",
-        "mail_from_name": "Email From Name"
+        "file": {
+            "name": "File Format",
+            "pdf": "PDF",
+            "doc": "DOC",
+            "docx": "DOCX",
+            "ppt": "PPT",
+            "pptx": "PPTX",
+            "xls": "XLS",
+            "xlsx": "XLSX",
+            "txt": "TXT",
+            "accepts": "File Accepts",
+            "size": "File Size"
+        }
     },
     "placeholder": {
-        "mail_mailer": "Enter mail mailer",
-        "mail_host": "Enter mail host",
-        "mail_port": "Enter mail port",
-        "mail_username": "Enter mail username",
-        "mail_password": "Enter mail password",
-        "mail_encryption": "Enter mail encryption",
-        "mail_from_address": "Enter mail from address",
-        "mail_from_name": "Enter mail from name"
+        "file": {
+            "accepts": "Select mimetypes of accepted format",
+            "size": "Select file size"
+        }
     }
 };

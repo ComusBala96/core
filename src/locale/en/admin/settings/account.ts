@@ -5,6 +5,64 @@ export const en_admin_settings_account: Record<string, any> = {
         "password": "Admin |  Account | Password | Settings",
         "two_factor": "Admin |  Account | Two Factor | Settings"
     },
+    "breadcrumbs": {
+        "profile": {
+            "b1": {
+                "name": "Dashboard",
+                "url": "admin/dashboard"
+            },
+            "b2": {
+                "name": "Settings",
+                "url": ""
+            },
+            "b3": {
+                "name": "Profile",
+                "url": "admin/account/settings"
+            }
+        },
+        "password": {
+            "b1": {
+                "name": "Dashboard",
+                "url": "admin/dashboard"
+            },
+            "b2": {
+                "name": "Settings",
+                "url": ""
+            },
+            "b3": {
+                "name": "Password",
+                "url": "admin/account/change-password"
+            }
+        },
+        "social": {
+            "b1": {
+                "name": "Dashboard",
+                "url": "admin/dashboard"
+            },
+            "b2": {
+                "name": "Settings",
+                "url": ""
+            },
+            "b3": {
+                "name": "Social",
+                "url": "admin/account/social-accounts"
+            }
+        },
+        "TwoFA": {
+            "b1": {
+                "name": "Dashboard",
+                "url": "admin/dashboard"
+            },
+            "b2": {
+                "name": "Settings",
+                "url": ""
+            },
+            "b3": {
+                "name": "Two Factor",
+                "url": "admin/account/google-2fa"
+            }
+        }
+    },
     "text": {
         "2fa": "Verify Google Two Factor Authentication",
         "verify": "Verify",

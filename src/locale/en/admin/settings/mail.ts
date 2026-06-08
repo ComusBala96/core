@@ -19,14 +19,7 @@ export const en_admin_settings_mail: Record<string, any> = {
         }
     },
     "text": {
-        "title": "Email Configurations",
-        "email": "Email Config",
-        "google": "Google Config",
-        "analytic": "Analytic Config",
-        "datatable": "Datatable Config",
-        "image": "Image Config",
-        "video": "Video Config",
-        "file": "File Config"
+        "title": "Email Configurations"
     },
     "label": {
         "mail_mailer": "Email Mailer",
