@@ -1,0 +1,38 @@
+import { Api } from 'datatables.net-dt';
+import { AppConfig, ExcelConfig, PdfConfig } from '../types';
+export declare class App {
+    static config: AppConfig;
+    static pluginConfig: AppConfig;
+    static tableConfig: AppConfig;
+    static createConfig: AppConfig;
+    static deleteConfig: AppConfig;
+    static bulkDeleteConfig: AppConfig;
+    static updateConfig: AppConfig;
+    static bulkUpdateConfig: AppConfig;
+    static pdfConfig: PdfConfig;
+    static excelConfig: ExcelConfig;
+    static dataTableApi: Api<any>;
+    static beforeSuccessHandler?: undefined | ((op: AppConfig, res: Record<string, any>) => void);
+    static successHandler?: undefined | ((op: AppConfig, res: Record<string, any>) => void);
+    static afterSuccessHandler?: undefined | ((op: AppConfig, res: Record<string, any>) => void);
+    protected static bootPlugin(config: AppConfig): void;
+    protected static bootTable(config: AppConfig): void;
+    static table<T extends typeof App>(this: T, config: AppConfig): T;
+    static submit<T extends typeof App>(this: T, config: AppConfig): T;
+    static request<T extends typeof App>(this: T, config: AppConfig): T;
+    static create<T extends typeof App>(this: T, config: AppConfig): T;
+    static update<T extends typeof App>(this: T, config: AppConfig): T;
+    static destroy<T extends typeof App>(this: T, config: AppConfig): T;
+    static bulkUpdate<T extends typeof App>(this: T, config: AppConfig): T;
+    static bulkDelete<T extends typeof App>(this: T, config: AppConfig): T;
+    static downloadPdf<T extends typeof App>(this: T, config: PdfConfig): T;
+    static downloadExcel<T extends typeof App>(this: T, config: ExcelConfig): T;
+    static beforeSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: Record<string, any>) => void): T;
+    static success<T extends typeof App>(this: T, callback: (op: AppConfig, res: Record<string, any>) => void): T;
+    static onSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: Record<string, any>) => void): T;
+    static afterSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: Record<string, any>) => void): T;
+    static plugins<T extends typeof App>(this: T, config: AppConfig): T;
+    static event<T extends typeof App>(this: T, event: string, element: string, callback: (e: JQuery.TriggeredEvent, element: HTMLElement) => void): T;
+    static legacy<T extends typeof App>(this: T, config: AppConfig, callback: Function): T;
+}
+//# sourceMappingURL=app.d.ts.map

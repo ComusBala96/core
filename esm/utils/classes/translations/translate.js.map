@@ -1,0 +1,1 @@
+{"version":3,"file":"translate.js","sourceRoot":"","sources":["../../../../src/utils/classes/translations/translate.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,eAAe,CAAC;AAE7C,MAAM,OAAO,KAAK;IACd,MAAM,CAAC,MAAM,CAAC,KAAsB;QAChC,OAAO,YAAY,CAAC,KAAK,CAAC,CAAC;IAC/B,CAAC;CACJ"}

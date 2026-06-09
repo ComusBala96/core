@@ -1,6 +1,4 @@
 node_modules
 yarn.lock
-cjs
-esm
 dist
 build
