@@ -27,7 +27,12 @@ export const en_admin_settings_video: Record<string, any> = {
             "mp4": "MP4",
             "avi": "AVI",
             "mkv": "MKV",
-            "accepts": "Video Accepts"
+            "mov": "MOV",
+            "wmv": "WMV",
+            "webm": "WEBM",
+            "mpeg": "MPEG",
+            "accepts": "Video Accepts",
+            "size": "Video Size"
         }
     },
     "placeholder": {
