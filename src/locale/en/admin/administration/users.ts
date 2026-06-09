@@ -2,7 +2,8 @@ export const en_admin_administration_users: Record<string, any> = {
     "title": {
         "settings": "User |  Profile | Settings",
         "social": "User |  Profile | Social | Settings",
-        "password": "User |  Profile | Password | Settings"
+        "password": "User |  Profile | Password | Settings",
+        "two_factor": "User |  Profile | Two Factor | Settings"
     },
     "breadcrumbs": {
         "b1": {
@@ -37,7 +38,8 @@ export const en_admin_administration_users: Record<string, any> = {
         "website": "Website URL",
         "current_password": "Current Password",
         "new_password": "New Password",
-        "confirm_password": "Confirm Password"
+        "confirm_password": "Confirm Password",
+        "enable": "Two-Factor Authentication (2FA) is a security process that requires users to provide two different types of identification to access their account."
     },
     "placeholder": {
         "name": "Enter your full name",
