@@ -115,9 +115,9 @@ export interface DownloadExcelOptions {
 // Jodit Types
 
 export interface JoditOptions {
-    element?: string;
-    height?: number | string;
-    placeholder?: string;
+    element?: string | string[];
+    height?: number | string | Array<number | string>;
+    placeholder?: string | string[];
     removeButtons?: string[];
 }
 

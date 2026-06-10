@@ -27,6 +27,7 @@ export class App {
                 tomSelect(config?.plugins?.select);
             }
             if (config?.plugins?.jodit) {
+                console.log(Config.locale);
                 jodit(config?.plugins?.jodit);
             }
             if (config?.plugins?.datepicker) {

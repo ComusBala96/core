@@ -13,6 +13,7 @@ class App {
                 (0, plugins_1.tomSelect)(config?.plugins?.select);
             }
             if (config?.plugins?.jodit) {
+                console.log(app_1.Config.locale);
                 (0, plugins_1.jodit)(config?.plugins?.jodit);
             }
             if (config?.plugins?.datepicker) {

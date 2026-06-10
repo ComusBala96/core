@@ -91,9 +91,9 @@ export interface DownloadExcelOptions {
     globLoader?: boolean;
 }
 export interface JoditOptions {
-    element?: string;
-    height?: number | string;
-    placeholder?: string;
+    element?: string | string[];
+    height?: number | string | Array<number | string>;
+    placeholder?: string | string[];
     removeButtons?: string[];
 }
 export interface ModalResponse {
