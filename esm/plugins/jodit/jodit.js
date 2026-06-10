@@ -6,7 +6,7 @@ export async function jodit(op) {
     const [{ Jodit }] = await Promise.all([import('jodit'), import('jodit/esm/plugins/all.js')]);
     const { element = 'none', height = 300, placeholder = 'Write your content', removeButtons = [] } = op;
     if (Config.app_env) {
-        console.log('Jodit Options:', { element, height, placeholder, removeButtons });
+        console.log('Jodit Options:', op);
     }
     const fontFamily = Config.locale === 'bn' ? 'SolaimanLipi' : 'Roboto';
     const elements = Array.isArray(element) ? element : [element];
