@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_admin_administration_createAdmins = void 0;
-exports.en_admin_administration_createAdmins = {
+export const en_admin_administration_createAdmins = {
     "title": "Admin | Manage | Admins",
     "breadcrumbs": {
         "b1": {
@@ -54,4 +51,3 @@ exports.en_admin_administration_createAdmins = {
         }
     }
 };
-//# sourceMappingURL=createAdmins.js.map

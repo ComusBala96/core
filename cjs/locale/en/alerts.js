@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_alerts = void 0;
-exports.en_alerts = {
+export const en_alerts = {
     "confirm": "Are you sure want to perform this action.",
     "action_success": "Action successful.",
     "create": "Added successfully!",
@@ -91,4 +88,3 @@ exports.en_alerts = {
         }
     }
 };
-//# sourceMappingURL=alerts.js.map

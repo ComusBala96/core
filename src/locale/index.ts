@@ -8,6 +8,7 @@ export { en_admin_administration_users } from './en/admin/administration/users';
 export { en_admin_dashboard_dashboard } from './en/admin/dashboard/dashboard';
 export { en_admin_navigation_page } from './en/admin/navigation/page';
 export { en_admin_settings_account } from './en/admin/settings/account';
+export { en_admin_settings_application } from './en/admin/settings/application';
 export { en_admin_settings_file } from './en/admin/settings/file';
 export { en_admin_settings_image } from './en/admin/settings/image';
 export { en_admin_settings_mail } from './en/admin/settings/mail';

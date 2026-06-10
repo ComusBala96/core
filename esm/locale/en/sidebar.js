@@ -35,17 +35,17 @@ export const en_sidebar = {
     "color": "Color Management",
     "font": "Font Management",
     "settings": "Settings",
-    "account": "Account Settings",
+    "account": "Account",
     "configurations": "Configurations",
     "mail": "Mail Settings",
     "file": "File Settings",
     "image": "Image Settings",
     "video": "Video Settings",
-    "general": "General Settings",
+    "general": "General",
+    "application": "Application Settings",
     "preferences": "Preferences",
     "limitations": "Limitations",
     "update_backup": "Update & Backup",
     "db_backup": "Database Backup",
     "assets_backup": "Assets Backup"
 };
-//# sourceMappingURL=sidebar.js.map

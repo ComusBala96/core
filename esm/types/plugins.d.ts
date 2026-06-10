@@ -94,7 +94,8 @@ export interface JoditOptions {
     element?: string | string[];
     height?: number | string | Array<number | string>;
     placeholder?: string | string[];
-    removeButtons?: string[];
+    buttons?: string[] | string[][];
+    removeButtons?: string[] | string[][];
 }
 export interface ModalResponse {
     success: boolean;

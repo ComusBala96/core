@@ -21,4 +21,3 @@ export const en_buttons = {
     "close": "Close",
     "go_back_home": "Go Back Home."
 };
-//# sourceMappingURL=buttons.js.map

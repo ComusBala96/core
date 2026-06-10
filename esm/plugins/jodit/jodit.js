@@ -4,13 +4,29 @@ export async function jodit(op) {
         op = {};
     }
     const [{ Jodit }] = await Promise.all([import('jodit'), import('jodit/esm/plugins/all.js')]);
-    const { element = 'none', height = 300, placeholder = 'Write your content', removeButtons = [] } = op;
+    const { element = 'none', height = 300, placeholder = 'Write your content', removeButtons = [], buttons = [] } = op;
     if (Config.app_env) {
         console.log('Jodit Options:', op);
     }
     const fontFamily = Config.locale === 'bn' ? 'SolaimanLipi' : 'Roboto';
     const elements = Array.isArray(element) ? element : [element];
     const editors = elements.map((el, index) => {
+        const defaultButtons = ['bold', 'italic', 'underline', 'fontsize', 'ul', 'ol', 'table', 'link', 'preview', 'source'];
+        let buttonsConfig;
+        try {
+            if (buttons === undefined || buttons === null) {
+                // No buttons option provided
+                buttonsConfig = defaultButtons;
+            }
+            else {
+                const currentButtons = Array.isArray(buttons?.[0]) ? (buttons[index] ?? []) : buttons;
+                buttonsConfig = [...new Set([...defaultButtons, ...currentButtons])];
+            }
+        }
+        catch {
+            buttonsConfig = Jodit.defaultOptions.buttons;
+        }
+        const currentRemoveButtons = Array.isArray(removeButtons?.[0]) ? (removeButtons[index] ?? []) : (removeButtons ?? []);
         const editor = Jodit.make(`.${el}`, {
             readonly: false,
             width: '100%',
@@ -18,7 +34,7 @@ export async function jodit(op) {
             placeholder: Array.isArray(placeholder) ? (placeholder[index] ?? '') : placeholder,
             style: {
                 background: 'rgba(209, 213, 219, 0.2)',
-                fontSize: '18px',
+                fontSize: '14px',
                 fontFamily: fontFamily,
             },
             // @ts-ignore
@@ -34,7 +50,8 @@ export async function jodit(op) {
                 width: '300px',
                 useImageEditor: true,
             },
-            removeButtons: ['speechRecognize', 'file', ...removeButtons],
+            buttons: buttonsConfig,
+            removeButtons: ['speechRecognize', 'file', ...currentRemoveButtons],
         });
         editor.events.on('afterInit', () => {
             if (editor.value === '<p><br></p>') {
