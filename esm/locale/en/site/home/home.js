@@ -39,4 +39,3 @@ export const en_site_home_home = {
         "email": "Enter your email"
     }
 };
-//# sourceMappingURL=home.js.map
