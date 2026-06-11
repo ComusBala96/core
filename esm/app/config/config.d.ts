@@ -136,7 +136,7 @@ export declare class Config {
     /**
      * Get meta image config
      * param: none
-     * Example: { {404: 'statics/images/404.png', favicon: 'favicon.ico', logo: 'logo.png', logo_dark: 'logo-dark.png', auth: 'statics/images/auth.jpg', loader: 'statics/images/loader.gif', …} }
+     * Example: { {404: 'statics/images/404.png', favicon: 'favicon.ico', logo: 'logo.png', logo_dark: 'logo-dark.png', auth: 'statics/images/auth.png', loader: 'statics/images/loader.gif', …} }
      * return: meta image config object or {};
      */
     static get meta_image(): Record<string, any>;

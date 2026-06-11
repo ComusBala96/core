@@ -1,4 +1,7 @@
-export const en_admin_administration_roles = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_admin_administration_roles = void 0;
+exports.en_admin_administration_roles = {
     "title": "Admin |  Manage |  Roles",
     "breadcrumbs": {
         "b1": {
@@ -44,3 +47,4 @@ export const en_admin_administration_roles = {
         }
     }
 };
+//# sourceMappingURL=roles.js.map

@@ -1,4 +1,7 @@
-export const en_admin_administration_admins = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_admin_administration_admins = void 0;
+exports.en_admin_administration_admins = {
     "title": {
         "settings": "Admin |  Profile | Settings",
         "social": "Admin |  Profile | Social | Settings",
@@ -76,3 +79,4 @@ export const en_admin_administration_admins = {
         }
     }
 };
+//# sourceMappingURL=admins.js.map
