@@ -133,8 +133,22 @@ export const en_admin_settings_image = {
         },
         "favicon": {
             "mimes": "Enter mimetypes of accepted extension",
-            "width": "Enter width, e.g: 180",
-            "height": "Enter height, e.g: 180"
+            "xs": {
+                "width": "Enter width, e.g: 16",
+                "height": "Enter height, e.g: 16"
+            },
+            "sm": {
+                "width": "Enter width, e.g: 32",
+                "height": "Enter height, e.g: 32"
+            },
+            "md": {
+                "width": "Enter width, e.g: 64",
+                "height": "Enter height, e.g: 64"
+            },
+            "xl": {
+                "width": "Enter width, e.g: 96",
+                "height": "Enter height, e.g: 96"
+            }
         },
         "profile": {
             "mimes": "Enter mimetypes of accepted extension",
