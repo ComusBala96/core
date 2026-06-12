@@ -22,8 +22,8 @@ export const en_admin_settings_image: Record<string, any> = {
         "title": "Image Configurations"
     },
     "label": {
-        "profile": {
-            "name": "Profile Image Format",
+        "logo": {
+            "ext": "Logo Extension",
             "jpg": "JPG",
             "jpeg": "JPEG",
             "png": "PNG",
@@ -31,13 +31,53 @@ export const en_admin_settings_image: Record<string, any> = {
             "webp": "WEBP",
             "svg": "SVG",
             "bmp": "BMP",
-            "accepts": "Profile Image Accepts",
+            "mimes": "Logo Image MimeTypes",
+            "size": "Logo Image Size",
+            "width": "Width",
+            "height": "Height",
+            "xs": "Thumb",
+            "sm": "Small",
+            "md": "Medium",
+            "xl": "Large"
+        },
+        "favicon": {
+            "ext": "Favicon Extension",
+            "jpg": "JPG",
+            "jpeg": "JPEG",
+            "png": "PNG",
+            "gif": "GIF",
+            "webp": "WEBP",
+            "svg": "SVG",
+            "bmp": "BMP",
+            "mimes": "Favicon Image MimeTypes",
+            "size": "Favicon Image Size",
+            "width": "Width",
+            "height": "Height",
+            "xs": "Thumb",
+            "sm": "Small",
+            "md": "Medium",
+            "xl": "Large"
+        },
+        "profile": {
+            "ext": "Profile Extension",
+            "jpg": "JPG",
+            "jpeg": "JPEG",
+            "png": "PNG",
+            "gif": "GIF",
+            "webp": "WEBP",
+            "svg": "SVG",
+            "bmp": "BMP",
+            "mimes": "Profile Image MimeTypes",
             "size": "Profile Image Size",
             "width": "Width",
-            "height": "Height"
+            "height": "Height",
+            "xs": "Thumb",
+            "sm": "Small",
+            "md": "Medium",
+            "xl": "Large"
         },
         "cover": {
-            "name": "Cover Image Format",
+            "ext": "Cover Extension",
             "jpg": "JPG",
             "jpeg": "JPEG",
             "png": "PNG",
@@ -45,13 +85,17 @@ export const en_admin_settings_image: Record<string, any> = {
             "webp": "WEBP",
             "svg": "SVG",
             "bmp": "BMP",
-            "accepts": "Cover Image Accepts",
+            "mimes": "Cover Image MimeTypes",
             "size": "Cover Image Size",
             "width": "Width",
-            "height": "Height"
+            "height": "Height",
+            "xs": "Thumb",
+            "sm": "Small",
+            "md": "Medium",
+            "xl": "Large"
         },
-        "post": {
-            "name": "Image Format",
+        "image": {
+            "ext": "Image Extension",
             "jpg": "JPG",
             "jpeg": "JPEG",
             "png": "PNG",
@@ -59,52 +103,55 @@ export const en_admin_settings_image: Record<string, any> = {
             "webp": "WEBP",
             "svg": "SVG",
             "bmp": "BMP",
-            "accepts": "Image Accepts",
+            "mimes": "Image MimeTypes",
             "size": "Image Size",
-            "sm": "Mobile",
-            "md": "Laptop",
-            "xl": "Desktop"
-        },
-        "ad": {
-            "name": "AD Image Format",
-            "jpg": "JPG",
-            "png": "PNG",
-            "webp": "WEBP",
-            "accepts": "AD Image Accepts",
-            "size": "AD Image Size",
-            "sm": "Mobile",
-            "md": "Laptop",
-            "xl": "Desktop"
+            "xs": "Thumb",
+            "sm": "Small",
+            "md": "Medium",
+            "xl": "Large"
         }
     },
     "placeholder": {
+        "logo": {
+            "mimes": "Enter mimetypes of accepted extension",
+            "xs": {
+                "width": "Enter width, e.g: 64",
+                "height": "Enter height, e.g: 64"
+            },
+            "sm": {
+                "width": "Enter width, e.g: 128",
+                "height": "Enter height, e.g: 128"
+            },
+            "md": {
+                "width": "Enter width, e.g: 256",
+                "height": "Enter height, e.g: 256"
+            },
+            "xl": {
+                "width": "Enter width, e.g: 512",
+                "height": "Enter height, e.g: 512"
+            }
+        },
+        "favicon": {
+            "mimes": "Enter mimetypes of accepted extension",
+            "width": "Enter width, e.g: 180",
+            "height": "Enter height, e.g: 180"
+        },
         "profile": {
-            "accepts": "Enter mimetypes of accepted format",
+            "mimes": "Enter mimetypes of accepted extension",
             "width": "Enter width, e.g: 180",
             "height": "Enter height, e.g: 180"
         },
         "cover": {
-            "accepts": "Enter mimetypes of accepted format",
+            "mimes": "Enter mimetypes of accepted extension",
             "width": "Enter width, e.g: 1024",
             "height": "Enter height, e.g: 768"
         },
-        "post": {
-            "accepts": "Enter mimetypes of accepted format",
-            "sm": {
+        "image": {
+            "mimes": "Enter mimetypes of accepted extension",
+            "xs": {
                 "width": "Enter width, e.g: 640",
                 "height": "Enter height, e.g: 360"
             },
-            "md": {
-                "width": "Enter width, e.g: 1024",
-                "height": "Enter height, e.g: 768"
-            },
-            "xl": {
-                "width": "Enter width, e.g: 1920",
-                "height": "Enter height, e.g: 1080"
-            }
-        },
-        "ad": {
-            "accepts": "Enter mimetypes of accepted format",
             "sm": {
                 "width": "Enter width, e.g: 640",
                 "height": "Enter height, e.g: 360"

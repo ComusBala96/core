@@ -23,7 +23,7 @@ export const en_admin_settings_file: Record<string, any> = {
     },
     "label": {
         "file": {
-            "name": "File Format",
+            "name": "File Extensions",
             "pdf": "PDF",
             "doc": "DOC",
             "docx": "DOCX",
@@ -32,13 +32,13 @@ export const en_admin_settings_file: Record<string, any> = {
             "xls": "XLS",
             "xlsx": "XLSX",
             "txt": "TXT",
-            "accepts": "File Accepts",
+            "mimes": "File MimeTypes",
             "size": "File Size"
         }
     },
     "placeholder": {
         "file": {
-            "accepts": "Select mimetypes of accepted format",
+            "mimes": "Select mimetypes of accepted extension",
             "size": "Select file size"
         }
     }

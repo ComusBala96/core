@@ -23,7 +23,7 @@ export const en_admin_settings_video = {
     },
     "label": {
         "video": {
-            "name": "Video Format",
+            "name": "Video Extension",
             "mp4": "MP4",
             "avi": "AVI",
             "mkv": "MKV",
@@ -31,13 +31,13 @@ export const en_admin_settings_video = {
             "wmv": "WMV",
             "webm": "WEBM",
             "mpeg": "MPEG",
-            "accepts": "Video Accepts",
+            "mimes": "Video MimeTypes",
             "size": "Video Size"
         }
     },
     "placeholder": {
         "video": {
-            "accepts": "Select mimetypes of accepted format"
+            "accepts": "Select mimetypes of accepted extension"
         }
     }
 };

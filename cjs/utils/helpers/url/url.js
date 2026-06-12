@@ -21,30 +21,43 @@ function current(path) {
  * Timeout Reload.
  */
 function reloadTimeout(time = 1200) {
-    if (time)
+    if (time) {
         setTimeout(() => reload(), time);
+        return;
+    }
+    console.error('Time not found!');
 }
 /**
  * Timeout Redirect.
  */
 function redirectTimeout(path, time = 1200) {
-    if (time)
+    if (time) {
         setTimeout(() => redirect(path), time);
+        return;
+    }
+    console.error('Time not found!');
 }
 /**
  * Reload.
  */
 function reload() {
-    if (window)
+    if (window) {
         window.location.reload();
+        return;
+    }
     console.error('Something went wrong! Window not found!');
 }
 /**
  * Redirect.
  */
 function redirect(path) {
-    if (path)
+    if (path) {
+        if (app_1.Config.app_env) {
+            console.log((0, strings_1.normalize)(path));
+        }
         window.location.href = app_1.Config.app_url + (0, strings_1.normalize)(path);
+        return;
+    }
     console.error('Redirect URL not found!');
 }
 function reloadTable(api) {
@@ -52,6 +65,8 @@ function reloadTable(api) {
         $(classes_1.Str.getSelector('show_selected')).html('');
         $(classes_1.Str.getSelector('show_selected_base')).addClass('hidden');
         api.ajax.reload();
+        return;
     }
+    console.error('API not found!');
 }
 //# sourceMappingURL=url.js.map

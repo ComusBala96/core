@@ -77,7 +77,7 @@ export async function loadDataTable(table, op = {}) {
                 op = { ...op, data, dataSrc: data.data };
                 if (Config.app_env)
                     console.log(data.data);
-                return data.data;
+                return data?.data;
             },
             error: (err) => console.log(err),
         },

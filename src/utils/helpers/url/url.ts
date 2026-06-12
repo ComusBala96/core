@@ -18,27 +18,44 @@ export function current(path?: string): string {
  * Timeout Reload.
  */
 export function reloadTimeout(time: number | null = 1200): void {
-    if (time) setTimeout(() => reload(), time);
+    if (time) {
+        setTimeout(() => reload(), time);
+        return;
+    }
+    console.error('Time not found!');
 }
 /**
  * Timeout Redirect.
  */
 export function redirectTimeout(path: string | null, time: number | null = 1200): void {
-    if (time) setTimeout(() => redirect(path), time);
+    if (time) {
+        setTimeout(() => redirect(path), time);
+        return;
+    }
+    console.error('Time not found!');
 }
 
 /**
  * Reload.
  */
 export function reload(): void {
-    if (window) window.location.reload();
+    if (window) {
+        window.location.reload();
+        return;
+    }
     console.error('Something went wrong! Window not found!');
 }
 /**
  * Redirect.
  */
 export function redirect(path: string | null): void {
-    if (path) window.location.href = Config.app_url + normalize(path);
+    if (path) {
+        if (Config.app_env) {
+            console.log(normalize(path));
+        }
+        window.location.href = Config.app_url + normalize(path);
+        return;
+    }
     console.error('Redirect URL not found!');
 }
 
@@ -47,5 +64,7 @@ export function reloadTable(api: Api): void {
         $(Str.getSelector('show_selected')).html('');
         $(Str.getSelector('show_selected_base')).addClass('hidden');
         api.ajax.reload();
+        return;
     }
+    console.error('API not found!');
 }
