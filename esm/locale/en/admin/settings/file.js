@@ -23,7 +23,7 @@ export const en_admin_settings_file = {
     },
     "label": {
         "file": {
-            "name": "File Extensions",
+            "ext": "File Extensions",
             "pdf": "PDF",
             "doc": "DOC",
             "docx": "DOCX",

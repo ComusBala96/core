@@ -23,7 +23,7 @@ export const en_admin_settings_video: Record<string, any> = {
     },
     "label": {
         "video": {
-            "name": "Video Extension",
+            "ext": "Video Extension",
             "mp4": "MP4",
             "avi": "AVI",
             "mkv": "MKV",
@@ -37,7 +37,8 @@ export const en_admin_settings_video: Record<string, any> = {
     },
     "placeholder": {
         "video": {
-            "accepts": "Select mimetypes of accepted extension"
+            "mimes": "Select mimetypes of accepted extension",
+            "size": "Select video size"
         }
     }
 };

@@ -152,31 +152,59 @@ export const en_admin_settings_image: Record<string, any> = {
         },
         "profile": {
             "mimes": "Enter mimetypes of accepted extension",
-            "width": "Enter width, e.g: 180",
-            "height": "Enter height, e.g: 180"
+            "xs": {
+                "width": "Enter width, e.g: 64",
+                "height": "Enter height, e.g: 64"
+            },
+            "sm": {
+                "width": "Enter width, e.g: 128",
+                "height": "Enter height, e.g: 128"
+            },
+            "md": {
+                "width": "Enter width, e.g: 256",
+                "height": "Enter height, e.g: 256"
+            },
+            "xl": {
+                "width": "Enter width, e.g: 512",
+                "height": "Enter height, e.g: 512"
+            }
         },
         "cover": {
             "mimes": "Enter mimetypes of accepted extension",
-            "width": "Enter width, e.g: 1024",
-            "height": "Enter height, e.g: 768"
-        },
-        "image": {
-            "mimes": "Enter mimetypes of accepted extension",
             "xs": {
-                "width": "Enter width, e.g: 640",
-                "height": "Enter height, e.g: 360"
+                "width": "Enter width, e.g: 480",
+                "height": "Enter height, e.g: 270"
             },
             "sm": {
-                "width": "Enter width, e.g: 640",
-                "height": "Enter height, e.g: 360"
+                "width": "Enter width, e.g: 768",
+                "height": "Enter height, e.g: 432"
             },
             "md": {
-                "width": "Enter width, e.g: 1024",
-                "height": "Enter height, e.g: 768"
+                "width": "Enter width, e.g: 1280",
+                "height": "Enter height, e.g: 720"
             },
             "xl": {
                 "width": "Enter width, e.g: 1920",
                 "height": "Enter height, e.g: 1080"
+            }
+        },
+        "image": {
+            "mimes": "Enter mimetypes of accepted extension",
+            "xs": {
+                "width": "Enter width, e.g: 300",
+                "height": "Enter height, e.g: 158"
+            },
+            "sm": {
+                "width": "Enter width, e.g: 480",
+                "height": "Enter height, e.g: 252"
+            },
+            "md": {
+                "width": "Enter width, e.g: 768",
+                "height": "Enter height, e.g: 403"
+            },
+            "xl": {
+                "width": "Enter width, e.g: 1200",
+                "height": "Enter height, e.g: 630"
             }
         }
     }
