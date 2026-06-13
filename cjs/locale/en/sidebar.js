@@ -1,4 +1,7 @@
-export const en_sidebar = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_sidebar = void 0;
+exports.en_sidebar = {
     "panel": {
         "user": "User Panel",
         "admin": "Admin Panel"
@@ -49,3 +52,4 @@ export const en_sidebar = {
     "db_backup": "Database Backup",
     "assets_backup": "Assets Backup"
 };
+//# sourceMappingURL=sidebar.js.map

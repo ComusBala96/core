@@ -1,4 +1,7 @@
-export const en_datatable = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_datatable = void 0;
+exports.en_datatable = {
     "emptyTable": "No data available in table",
     "info": "_START_ - _END_ of _TOTAL_",
     "infoEmpty": "Showing 0 to 0 of 0 entries",
@@ -26,3 +29,4 @@ export const en_datatable = {
         }
     }
 };
+//# sourceMappingURL=datatable.js.map
