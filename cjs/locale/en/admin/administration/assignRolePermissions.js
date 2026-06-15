@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_admin_administration_assignRolePermissions = void 0;
-exports.en_admin_administration_assignRolePermissions = {
+export const en_admin_administration_assignRolePermissions = {
     "title": "Admin |  Assign |  Role | Permissions",
     "breadcrumbs": {
         "b1": {
@@ -49,4 +46,3 @@ exports.en_admin_administration_assignRolePermissions = {
         }
     }
 };
-//# sourceMappingURL=assignRolePermissions.js.map

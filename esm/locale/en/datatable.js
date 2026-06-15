@@ -26,4 +26,3 @@ export const en_datatable = {
         }
     }
 };
-//# sourceMappingURL=datatable.js.map

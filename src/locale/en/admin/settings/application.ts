@@ -26,8 +26,8 @@ export const en_admin_settings_application: Record<string, any> = {
         "address": "Application Address",
         "copyright": "Application Copyright",
         "version": "Application Version",
-        "logo": "Application Logo",
-        "favicon": "Application Favicon",
+        "logo": "Application Logo (Min: 512x512)",
+        "favicon": "Application Favicon (Min: 512x512)",
         "about": "About Application"
     },
     "placeholder": {

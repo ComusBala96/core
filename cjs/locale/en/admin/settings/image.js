@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_admin_settings_image = void 0;
-exports.en_admin_settings_image = {
+export const en_admin_settings_image = {
     "title": "Admin |  Settings |  Configurations |  Image",
     "breadcrumbs": {
         "b1": {
@@ -59,7 +56,10 @@ exports.en_admin_settings_image = {
             "xs": "Thumb",
             "sm": "Small",
             "md": "Medium",
-            "xl": "Large"
+            "xl": "Large",
+            "2xl": "Apple Touch Icon",
+            "3xl": "Android Chrome Medium",
+            "4xl": "Android Chrome Large"
         },
         "profile": {
             "ext": "Profile Extension",
@@ -151,6 +151,18 @@ exports.en_admin_settings_image = {
             "xl": {
                 "width": "Enter width, e.g: 96",
                 "height": "Enter height, e.g: 96"
+            },
+            "2xl": {
+                "width": "Enter width, e.g: 180",
+                "height": "Enter height, e.g: 180"
+            },
+            "3xl": {
+                "width": "Enter width, e.g: 192",
+                "height": "Enter height, e.g: 192"
+            },
+            "4xl": {
+                "width": "Enter width, e.g: 512",
+                "height": "Enter height, e.g: 512"
             }
         },
         "profile": {
@@ -212,4 +224,3 @@ exports.en_admin_settings_image = {
         }
     }
 };
-//# sourceMappingURL=image.js.map

@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_admin_administration_permissions = void 0;
-exports.en_admin_administration_permissions = {
+export const en_admin_administration_permissions = {
     "title": "Admin |  Manage |  Permissions",
     "breadcrumbs": {
         "b1": {
@@ -46,4 +43,3 @@ exports.en_admin_administration_permissions = {
         }
     }
 };
-//# sourceMappingURL=permissions.js.map

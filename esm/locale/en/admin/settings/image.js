@@ -56,7 +56,10 @@ export const en_admin_settings_image = {
             "xs": "Thumb",
             "sm": "Small",
             "md": "Medium",
-            "xl": "Large"
+            "xl": "Large",
+            "2xl": "Apple Touch Icon",
+            "3xl": "Android Chrome Medium",
+            "4xl": "Android Chrome Large"
         },
         "profile": {
             "ext": "Profile Extension",
@@ -148,6 +151,18 @@ export const en_admin_settings_image = {
             "xl": {
                 "width": "Enter width, e.g: 96",
                 "height": "Enter height, e.g: 96"
+            },
+            "2xl": {
+                "width": "Enter width, e.g: 180",
+                "height": "Enter height, e.g: 180"
+            },
+            "3xl": {
+                "width": "Enter width, e.g: 192",
+                "height": "Enter height, e.g: 192"
+            },
+            "4xl": {
+                "width": "Enter width, e.g: 512",
+                "height": "Enter height, e.g: 512"
             }
         },
         "profile": {
@@ -209,4 +224,3 @@ export const en_admin_settings_image = {
         }
     }
 };
-//# sourceMappingURL=image.js.map

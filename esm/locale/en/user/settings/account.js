@@ -49,4 +49,3 @@ export const en_user_settings_account = {
         "otp": "Enter OTP"
     }
 };
-//# sourceMappingURL=account.js.map

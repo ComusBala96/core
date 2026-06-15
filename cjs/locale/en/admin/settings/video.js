@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_admin_settings_video = void 0;
-exports.en_admin_settings_video = {
+export const en_admin_settings_video = {
     "title": "Admin |  Settings |  Configurations |  Video",
     "breadcrumbs": {
         "b1": {
@@ -45,4 +42,3 @@ exports.en_admin_settings_video = {
         }
     }
 };
-//# sourceMappingURL=video.js.map

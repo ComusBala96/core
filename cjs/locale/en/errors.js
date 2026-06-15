@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_errors = void 0;
-exports.en_errors = {
+export const en_errors = {
     "404": {
         "title": "Error | 404"
     },
@@ -25,4 +22,3 @@ exports.en_errors = {
     "no_verify": "Email not verified, Please verify your email!",
     "no_password": "User Credentials Not Found? Please Change Your Credentials!"
 };
-//# sourceMappingURL=errors.js.map
