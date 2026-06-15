@@ -106,3 +106,4 @@ export const en_admin_settings_account = {
         "otp": "Enter OTP"
     }
 };
+//# sourceMappingURL=account.js.map

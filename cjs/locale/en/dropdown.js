@@ -1,4 +1,7 @@
-export const en_dropdown = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_dropdown = void 0;
+exports.en_dropdown = {
     "panel": {
         "user": "User Panel",
         "admin": "Admin Panel"
@@ -13,3 +16,4 @@ export const en_dropdown = {
     "add_post": "Add Post",
     "contact": "Contact"
 };
+//# sourceMappingURL=dropdown.js.map
