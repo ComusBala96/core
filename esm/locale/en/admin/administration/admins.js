@@ -76,4 +76,3 @@ export const en_admin_administration_admins = {
         }
     }
 };
-//# sourceMappingURL=admins.js.map

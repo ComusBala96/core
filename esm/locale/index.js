@@ -6,6 +6,15 @@ export { en_admin_administration_permissions } from './en/admin/administration/p
 export { en_admin_administration_roles } from './en/admin/administration/roles';
 export { en_admin_administration_users } from './en/admin/administration/users';
 export { en_admin_dashboard_dashboard } from './en/admin/dashboard/dashboard';
+export { en_admin_mailbox_administrator } from './en/admin/mailbox/administrator';
+export { en_admin_mailbox_compose } from './en/admin/mailbox/compose';
+export { en_admin_mailbox_draft } from './en/admin/mailbox/draft';
+export { en_admin_mailbox_sent } from './en/admin/mailbox/sent';
+export { en_admin_mailbox_template } from './en/admin/mailbox/template';
+export { en_admin_mailbox_users } from './en/admin/mailbox/users';
+export { en_admin_message_inbox } from './en/admin/message/inbox';
+export { en_admin_message_replay } from './en/admin/message/replay';
+export { en_admin_message_template } from './en/admin/message/template';
 export { en_admin_navigation_page } from './en/admin/navigation/page';
 export { en_admin_settings_account } from './en/admin/settings/account';
 export { en_admin_settings_application } from './en/admin/settings/application';
@@ -32,4 +41,3 @@ export { en_site_profile_profile } from './en/site/profile/profile';
 export { en_user_dashboard_dashboard } from './en/user/dashboard/dashboard';
 export { en_user_settings_account } from './en/user/settings/account';
 export { en_validation } from './en/validation';
-//# sourceMappingURL=index.js.map

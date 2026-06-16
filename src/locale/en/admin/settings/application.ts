@@ -24,19 +24,21 @@ export const en_admin_settings_application: Record<string, any> = {
     "label": {
         "name": "Application Name",
         "address": "Application Address",
-        "copyright": "Application Copyright",
-        "version": "Application Version",
+        "title": "Application Title",
         "logo": "Application Logo (Min: 512x512)",
         "favicon": "Application Favicon (Min: 512x512)",
-        "about": "About Application"
+        "about": "About Application",
+        "copyright": "Application Copyright",
+        "version": "Application Version"
     },
     "placeholder": {
         "name": "Enter application name",
         "address": "Enter application address",
-        "copyright": "Write application copyright",
-        "version": "Enter application version",
+        "title": "Enter application title",
         "logo": "Enter application logo",
         "favicon": "Enter application favicon",
-        "about": "Write about application"
+        "about": "Write about application",
+        "copyright": "Write application copyright",
+        "version": "Enter application version"
     }
 };

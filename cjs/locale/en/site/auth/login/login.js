@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_site_auth_login_login = void 0;
-exports.en_site_auth_login_login = {
+export const en_site_auth_login_login = {
     "breadcrumb": {
         "title": "Login",
         "new_password": "New Password",
@@ -43,4 +40,3 @@ exports.en_site_auth_login_login = {
         "otp": "Enter OTP"
     }
 };
-//# sourceMappingURL=login.js.map

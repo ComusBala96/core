@@ -46,4 +46,3 @@ export const en_admin_administration_assignRolePermissions = {
         }
     }
 };
-//# sourceMappingURL=assignRolePermissions.js.map
