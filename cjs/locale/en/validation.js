@@ -1,4 +1,7 @@
-export const en_validation = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_validation = void 0;
+exports.en_validation = {
     "accepted": "Must be accepted.",
     "active_url": "Is not a valid URL.",
     "after": "Must be a date after :date.",
@@ -113,3 +116,4 @@ export const en_validation = {
     },
     "attributes": {}
 };
+//# sourceMappingURL=validation.js.map

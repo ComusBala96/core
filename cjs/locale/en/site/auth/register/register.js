@@ -1,4 +1,7 @@
-export const en_site_auth_register_register = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_site_auth_register_register = void 0;
+exports.en_site_auth_register_register = {
     "breadcrumb": {
         "title": "Register"
     },
@@ -28,3 +31,4 @@ export const en_site_auth_register_register = {
         "re_password": "Re-type your password"
     }
 };
+//# sourceMappingURL=register.js.map

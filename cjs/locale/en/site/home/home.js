@@ -1,4 +1,7 @@
-export const en_site_home_home = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_site_home_home = void 0;
+exports.en_site_home_home = {
     "title": "Home",
     "text": {
         "print": "Print",
@@ -39,3 +42,4 @@ export const en_site_home_home = {
         "email": "Enter your email"
     }
 };
+//# sourceMappingURL=home.js.map

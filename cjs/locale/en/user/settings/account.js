@@ -1,4 +1,7 @@
-export const en_user_settings_account = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_user_settings_account = void 0;
+exports.en_user_settings_account = {
     "title": {
         "settings": "User |  Account | Settings",
         "social": "User |  Account | Social | Settings",
@@ -49,3 +52,4 @@ export const en_user_settings_account = {
         "otp": "Enter OTP"
     }
 };
+//# sourceMappingURL=account.js.map
