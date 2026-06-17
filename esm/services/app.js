@@ -108,8 +108,8 @@ export class App {
                     if (Config.app_env) {
                         console.log('App.update method called with config:', this.updateConfig);
                     }
-                    Ajax.post(this.updateConfig);
                     this.bootPlugin(this.updateConfig);
+                    Ajax.post(this.updateConfig);
                 }
         }
         catch (error) {

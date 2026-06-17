@@ -5,8 +5,10 @@ import { Dom, Guard } from '../utils';
 import { Crud } from './crud';
 import { Ajax } from './ajax';
 import { Config } from '../app';
+import { Jodit } from 'jodit';
 
 export class App {
+    static editor: Jodit;
     static config: AppConfig = {};
     static pluginConfig: AppConfig = {};
     static tableConfig: AppConfig = {};
@@ -122,8 +124,8 @@ export class App {
                     if (Config.app_env) {
                         console.log('App.update method called with config:', this.updateConfig);
                     }
-                    Ajax.post(this.updateConfig);
                     this.bootPlugin(this.updateConfig);
+                    Ajax.post(this.updateConfig);
                 }
         } catch (error) {
             throw new Error(`App.update method failed: ${(error as Error).message}`);

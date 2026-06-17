@@ -40,4 +40,3 @@ export const en_site_auth_login_login = {
         "otp": "Enter OTP"
     }
 };
-//# sourceMappingURL=login.js.map

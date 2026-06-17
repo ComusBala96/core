@@ -2,6 +2,7 @@ import type { Jodit } from 'jodit';
 import { JoditOptions } from '../../types';
 import { Config } from '../../app';
 import { ButtonsOption } from 'jodit/types/types';
+import { App } from '../../services';
 
 export async function jodit(op: JoditOptions | boolean): Promise<Jodit | Jodit[]> {
     if (typeof op === 'boolean') {
@@ -63,6 +64,7 @@ export async function jodit(op: JoditOptions | boolean): Promise<Jodit | Jodit[]
         if (editor.editor) {
             editor.editor.style.fontFamily = fontFamily;
         }
+        App.editor = editor;
         return editor;
     });
     return editors.length === 1 ? editors[0] : editors;

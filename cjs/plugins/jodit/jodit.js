@@ -35,6 +35,7 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.jodit = jodit;
 const app_1 = require("../../app");
+const services_1 = require("../../services");
 async function jodit(op) {
     if (typeof op === 'boolean') {
         op = {};
@@ -97,6 +98,7 @@ async function jodit(op) {
         if (editor.editor) {
             editor.editor.style.fontFamily = fontFamily;
         }
+        services_1.App.editor = editor;
         return editor;
     });
     return editors.length === 1 ? editors[0] : editors;

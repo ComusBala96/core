@@ -1,4 +1,5 @@
 import { Config } from '../../app';
+import { App } from '../../services';
 export async function jodit(op) {
     if (typeof op === 'boolean') {
         op = {};
@@ -61,6 +62,7 @@ export async function jodit(op) {
         if (editor.editor) {
             editor.editor.style.fontFamily = fontFamily;
         }
+        App.editor = editor;
         return editor;
     });
     return editors.length === 1 ? editors[0] : editors;

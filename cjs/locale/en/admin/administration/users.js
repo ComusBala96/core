@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_admin_administration_users = void 0;
-exports.en_admin_administration_users = {
+export const en_admin_administration_users = {
     "title": {
         "settings": "User |  Profile | Settings",
         "social": "User |  Profile | Social | Settings",
@@ -79,4 +76,3 @@ exports.en_admin_administration_users = {
         }
     }
 };
-//# sourceMappingURL=users.js.map

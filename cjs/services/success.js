@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Success = void 0;
 const app_1 = require("../app");
 const utils_1 = require("../utils");
+const app_2 = require("./app");
 class Success {
     static handle(op, res) {
         if (app_1.Config.app_env) {
@@ -100,6 +101,8 @@ class Success {
         }
         if (res?.data?.reset && op?.element) {
             utils_1.Form.reset(op?.element);
+            app_2.App.editor.setEditorValue('');
+            app_2.App.editor.synchronizeValues();
         }
     }
 }

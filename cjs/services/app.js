@@ -111,8 +111,8 @@ class App {
                     if (app_1.Config.app_env) {
                         console.log('App.update method called with config:', this.updateConfig);
                     }
-                    ajax_1.Ajax.post(this.updateConfig);
                     this.bootPlugin(this.updateConfig);
+                    ajax_1.Ajax.post(this.updateConfig);
                 }
         }
         catch (error) {
