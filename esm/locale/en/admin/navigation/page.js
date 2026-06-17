@@ -52,3 +52,4 @@ export const en_admin_navigation_page = {
         }
     }
 };
+//# sourceMappingURL=page.js.map

@@ -96,6 +96,7 @@ export interface JoditOptions {
     placeholder?: string | string[];
     buttons?: string[] | string[][];
     removeButtons?: string[] | string[][];
+    reset?: false;
 }
 export interface ModalResponse {
     success: boolean;

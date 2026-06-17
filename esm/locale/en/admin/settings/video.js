@@ -42,3 +42,4 @@ export const en_admin_settings_video = {
         }
     }
 };
+//# sourceMappingURL=video.js.map

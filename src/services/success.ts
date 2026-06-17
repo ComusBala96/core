@@ -2,7 +2,6 @@ import { Api } from 'datatables.net';
 import { Config } from '../app';
 import { AppConfig } from '../types';
 import { Form, Guard, Str, Sweet, Toastr, Url } from '../utils';
-import { App } from './app';
 
 export class Success {
     static handle<T extends typeof Success>(this: T, op: AppConfig, res: Record<string, any>): void {
@@ -99,12 +98,10 @@ export class Success {
         }
         if (res?.data?.reset && op?.element) {
             Form.reset(op?.element);
-            App.editor.setEditorValue('');
-            App.editor.synchronizeValues();
+            Form.jodit.reset();
         }
-        if (typeof op?.plugins?.jodit !=='boolean' && op?.plugins?.jodit?.reset) {
-            App.editor.setEditorValue('');
-            App.editor.synchronizeValues();
+        if (typeof op?.plugins?.jodit !== 'boolean' && op?.plugins?.jodit?.reset) {
+            Form.jodit.reset();
         }
     }
 }

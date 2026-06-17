@@ -1,4 +1,5 @@
-import { getFormData, resetForm } from "../../helpers";
+import { App } from '../../../services';
+import { getFormData, resetForm } from '../../helpers';
 export class Form {
     static getData(op) {
         return getFormData(op);
@@ -7,4 +8,13 @@ export class Form {
         return resetForm(formId);
     }
 }
+Form.jodit = {
+    reset() {
+        if (App.editor) {
+            App.editor.value = '';
+            App.editor.synchronizeValues();
+            App.editor.events?.fire('change');
+        }
+    },
+};
 //# sourceMappingURL=form.js.map

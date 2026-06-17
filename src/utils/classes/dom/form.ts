@@ -1,5 +1,6 @@
-import { AppConfig } from "../../../types";
-import { getFormData, resetForm } from "../../helpers";
+import { App } from '../../../services';
+import { AppConfig } from '../../../types';
+import { getFormData, resetForm } from '../../helpers';
 
 export class Form {
     static getData(op: AppConfig): FormData | Record<string, any> {
@@ -8,4 +9,13 @@ export class Form {
     static reset(formId: string) {
         return resetForm(formId);
     }
+    static jodit = {
+        reset() {
+            if (App.editor) {
+                App.editor.value = '';
+                App.editor.synchronizeValues();
+                App.editor.events?.fire('change');
+            }
+        },
+    };
 }

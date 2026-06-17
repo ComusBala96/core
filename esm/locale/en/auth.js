@@ -4,3 +4,4 @@ export const en_auth = {
     "throttle": "Too many login attempts. Please try again in :seconds seconds.",
     "suspended": "Your account has been suspended!, please contact your administrator."
 };
+//# sourceMappingURL=auth.js.map

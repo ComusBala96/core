@@ -1,4 +1,7 @@
-export const en_admin_navigation_page = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_admin_navigation_page = void 0;
+exports.en_admin_navigation_page = {
     "title": "Admin | Navigation | Page",
     "breadcrumbs": {
         "b1": {
@@ -52,3 +55,4 @@ export const en_admin_navigation_page = {
         }
     }
 };
+//# sourceMappingURL=page.js.map
