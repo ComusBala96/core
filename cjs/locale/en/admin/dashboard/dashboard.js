@@ -1,4 +1,7 @@
-export const en_admin_dashboard_dashboard = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_admin_dashboard_dashboard = void 0;
+exports.en_admin_dashboard_dashboard = {
     "title": "Admin | Manage | Dashboard",
     "breadcrumbs": {
         "b1": {
@@ -54,3 +57,4 @@ export const en_admin_dashboard_dashboard = {
         }
     }
 };
+//# sourceMappingURL=dashboard.js.map

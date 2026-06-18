@@ -43,3 +43,4 @@ export const en_admin_administration_permissions = {
         }
     }
 };
+//# sourceMappingURL=permissions.js.map

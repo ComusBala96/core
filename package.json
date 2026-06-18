@@ -1,6 +1,6 @@
 {
     "name": "@orians/core",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "homepage": "https://github.com/ComusBala96/core.git",
     "description": "A npm package of core for orians.",
     "type": "module",

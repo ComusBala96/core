@@ -16,6 +16,7 @@ Form.jodit = {
     reset() {
         if (services_1.App.editor) {
             services_1.App.editor.value = '';
+            services_1.App.editor.setEditorValue('');
             services_1.App.editor.synchronizeValues();
             services_1.App.editor.events?.fire('change');
         }

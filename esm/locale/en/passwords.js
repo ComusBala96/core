@@ -5,3 +5,4 @@ export const en_passwords = {
     "token": "This password reset token is invalid.",
     "user": "We can't find a user with that email address."
 };
+//# sourceMappingURL=passwords.js.map

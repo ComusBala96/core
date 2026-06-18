@@ -1,4 +1,7 @@
-export const en_admin_settings_image = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_admin_settings_image = void 0;
+exports.en_admin_settings_image = {
     "title": "Admin |  Settings |  Configurations |  Image",
     "breadcrumbs": {
         "b1": {
@@ -224,3 +227,4 @@ export const en_admin_settings_image = {
         }
     }
 };
+//# sourceMappingURL=image.js.map

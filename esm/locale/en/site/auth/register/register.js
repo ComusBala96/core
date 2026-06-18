@@ -28,3 +28,4 @@ export const en_site_auth_register_register = {
         "re_password": "Re-type your password"
     }
 };
+//# sourceMappingURL=register.js.map

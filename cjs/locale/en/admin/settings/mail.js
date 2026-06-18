@@ -1,4 +1,7 @@
-export const en_admin_settings_mail = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.en_admin_settings_mail = void 0;
+exports.en_admin_settings_mail = {
     "title": "Admin |  Settings |  Configurations |  Mail",
     "breadcrumbs": {
         "b1": {
@@ -42,3 +45,4 @@ export const en_admin_settings_mail = {
         "mail_from_name": "Enter mail from name"
     }
 };
+//# sourceMappingURL=mail.js.map

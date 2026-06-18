@@ -22,3 +22,4 @@ export const en_errors = {
     "no_verify": "Email not verified, Please verify your email!",
     "no_password": "User Credentials Not Found? Please Change Your Credentials!"
 };
+//# sourceMappingURL=errors.js.map
