@@ -46,4 +46,3 @@ export const en_sidebar = {
     "db_backup": "Database Backup",
     "assets_backup": "Assets Backup"
 };
-//# sourceMappingURL=sidebar.js.map

@@ -42,4 +42,3 @@ export const en_admin_settings_mail = {
         "mail_from_name": "Enter mail from name"
     }
 };
-//# sourceMappingURL=mail.js.map

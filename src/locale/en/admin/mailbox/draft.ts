@@ -23,7 +23,7 @@ export const en_admin_mailbox_draft: Record<string, any> = {
         "email": "Email",
         "subject": "Subject",
         "message": "Message",
-        "attachment": "Attachment",
+        "attachments": "Attachments",
         "message_to": "Mail To",
         "phone": "Phone",
         "select": "Select All"

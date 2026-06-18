@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.en_admin_settings_file = void 0;
-exports.en_admin_settings_file = {
+export const en_admin_settings_file = {
     "title": "Admin |  Settings |  Configurations |  File",
     "breadcrumbs": {
         "b1": {
@@ -46,4 +43,3 @@ exports.en_admin_settings_file = {
         }
     }
 };
-//# sourceMappingURL=file.js.map

@@ -13,4 +13,3 @@ export const en_dropdown = {
     "add_post": "Add Post",
     "contact": "Contact"
 };
-//# sourceMappingURL=dropdown.js.map

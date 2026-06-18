@@ -20,7 +20,7 @@ export const en_admin_mailbox_compose: Record<string, any> = {
         "email": "Email",
         "subject": "Subject",
         "message": "Message",
-        "attachment": "Attachment"
+        "attachments": "Attachments"
     },
     "placeholder": {
         "load": "Select Mail Template",

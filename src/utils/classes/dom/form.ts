@@ -13,6 +13,7 @@ export class Form {
         reset() {
             if (App.editor) {
                 App.editor.value = '';
+                App.editor.setEditorValue('');
                 App.editor.synchronizeValues();
                 App.editor.events?.fire('change');
             }

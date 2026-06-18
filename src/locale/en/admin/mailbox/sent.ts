@@ -23,7 +23,7 @@ export const en_admin_mailbox_sent: Record<string, any> = {
         "email": "Email",
         "subject": "Subject",
         "message": "Message",
-        "attachment": "Attachment"
+        "attachments": "Attachments"
     },
     "placeholder": {
         "email": "Enter user email",
