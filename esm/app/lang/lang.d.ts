@@ -1,5 +1,7 @@
 import { LangOptions } from '../../types';
 export declare class Lang {
+    static LangModules: Record<string, any>;
+    static init(modules: Record<string, any>): void;
     /**
      * Join locale and module name to form export key
      * params: path - module path relative to locale folder

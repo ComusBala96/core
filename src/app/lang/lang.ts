@@ -1,9 +1,13 @@
-import * as LangModules from '../../locale/index';
 import { Dom, Str } from '../../utils';
 import { Config } from '../config/config';
 import { LangOptions } from '../../types';
 
 export class Lang {
+    static LangModules: Record<string, any> = {};
+
+    static init(modules: Record<string, any>) {
+        this.LangModules = modules;
+    }
     /**
      * Join locale and module name to form export key
      * params: path - module path relative to locale folder
@@ -26,7 +30,7 @@ export class Lang {
         if (!path) {
             throw new Error('Invalid lang path.');
         }
-        const key = Str.makeExportName(this.joinLocale(String(path))) as keyof typeof LangModules;
+        const key = Str.makeExportName(this.joinLocale(String(path))) as keyof typeof this.LangModules;
         return key;
     }
 
@@ -42,7 +46,7 @@ export class Lang {
         if (!val || typeof val !== 'string' || val.trim() === '') {
             throw new Error(`Value not found in #${id}.`);
         }
-        const key = this.getModuleKey(val) as keyof typeof LangModules;
+        const key = this.getModuleKey(val) as keyof typeof this.LangModules;
         if (!key) {
             throw new Error(`Invalid lang key in #${id}.`);
         }
@@ -56,8 +60,8 @@ export class Lang {
      * return: lang module object or throw error if not found
      */
     static get(path: string): Record<string, any> {
-        const key = this.getModuleKey(path) as keyof typeof LangModules;
-        const data = LangModules[key];
+        const key = this.getModuleKey(path) as keyof typeof this.LangModules;
+        const data = this.LangModules[key];
         if (!data) {
             throw new Error(`Lang module "${key}" not found.`);
         }
@@ -71,8 +75,8 @@ export class Lang {
      * return: lang module object or throw error if not found
      */
     static getLangById(id: string): Record<string, any> {
-        const key = this.getLangKey(id) as keyof typeof LangModules;
-        const data = LangModules[key];
+        const key = this.getLangKey(id) as keyof typeof this.LangModules;
+        const data = this.LangModules[key];
         if (!data) {
             throw new Error(`Lang module "${key}" not found.`);
         }
@@ -122,15 +126,15 @@ export class Lang {
     static get pagination(): Record<string, any> {
         return this.get('pagination');
     }
-    
+
     static get passwords(): Record<string, any> {
         return this.get('passwords');
     }
-    
+
     static get sidebar(): Record<string, any> {
         return this.get('sidebar');
     }
-    
+
     static get validation(): Record<string, any> {
         return this.get('validation');
     }
@@ -139,9 +143,9 @@ export class Lang {
      * param: path - dot notation path to translation key (e.g. "validation.required")
      * return: Object containing moduleKey (e.g. "en_validation") and nestedParts (e.g. ["required"]) or null if not found
      */
-    private static findModule(path: string): { moduleKey: keyof typeof LangModules | null; nestedParts: string[] } {
+    private static findModule(path: string): { moduleKey: keyof typeof Lang.LangModules | null; nestedParts: string[] } {
         const parts = path.split('.');
-        const keys = Object.keys(LangModules);
+        const keys = Object.keys(this.LangModules);
         const localePrefix = `${Config.locale}_`;
 
         for (let i = parts.length; i > 0; i--) {
@@ -149,7 +153,7 @@ export class Lang {
 
             if (keys.includes(candidate)) {
                 return {
-                    moduleKey: candidate as keyof typeof LangModules,
+                    moduleKey: candidate as keyof typeof this.LangModules,
                     nestedParts: parts.slice(i),
                 };
             }
@@ -173,7 +177,7 @@ export class Lang {
             console.error(`Lang module for path "${path}" not found.`);
             return null;
         }
-        let current: any = source ?? LangModules[moduleKey];
+        let current: any = source ?? this.LangModules[moduleKey];
         for (const part of nestedParts) {
             if (current && typeof current === 'object' && Object.prototype.hasOwnProperty.call(current, part)) {
                 current = current[part];
@@ -238,10 +242,10 @@ export class Lang {
      */
     static get all(): Record<string, any> {
         const all: Record<string, any> = {};
-        for (const key in LangModules) {
-            if (Object.prototype.hasOwnProperty.call(LangModules, key)) {
+        for (const key in this.LangModules) {
+            if (Object.prototype.hasOwnProperty.call(this.LangModules, key)) {
                 if (key.startsWith(Config.locale + '_')) {
-                    all[key] = LangModules[key as keyof typeof LangModules];
+                    all[key] = this.LangModules[key as keyof typeof this.LangModules];
                 }
             }
         }

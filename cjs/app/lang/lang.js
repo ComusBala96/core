@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Lang = void 0;
-const tslib_1 = require("tslib");
-const LangModules = tslib_1.__importStar(require("../../locale/index"));
 const utils_1 = require("../../utils");
 const config_1 = require("../config/config");
 class Lang {
+    static init(modules) {
+        this.LangModules = modules;
+    }
     /**
      * Join locale and module name to form export key
      * params: path - module path relative to locale folder
@@ -57,7 +58,7 @@ class Lang {
      */
     static get(path) {
         const key = this.getModuleKey(path);
-        const data = LangModules[key];
+        const data = this.LangModules[key];
         if (!data) {
             throw new Error(`Lang module "${key}" not found.`);
         }
@@ -71,7 +72,7 @@ class Lang {
      */
     static getLangById(id) {
         const key = this.getLangKey(id);
-        const data = LangModules[key];
+        const data = this.LangModules[key];
         if (!data) {
             throw new Error(`Lang module "${key}" not found.`);
         }
@@ -134,7 +135,7 @@ class Lang {
      */
     static findModule(path) {
         const parts = path.split('.');
-        const keys = Object.keys(LangModules);
+        const keys = Object.keys(this.LangModules);
         const localePrefix = `${config_1.Config.locale}_`;
         for (let i = parts.length; i > 0; i--) {
             const candidate = localePrefix + parts.slice(0, i).join('_');
@@ -164,7 +165,7 @@ class Lang {
             console.error(`Lang module for path "${path}" not found.`);
             return null;
         }
-        let current = source ?? LangModules[moduleKey];
+        let current = source ?? this.LangModules[moduleKey];
         for (const part of nestedParts) {
             if (current && typeof current === 'object' && Object.prototype.hasOwnProperty.call(current, part)) {
                 current = current[part];
@@ -228,10 +229,10 @@ class Lang {
      */
     static get all() {
         const all = {};
-        for (const key in LangModules) {
-            if (Object.prototype.hasOwnProperty.call(LangModules, key)) {
+        for (const key in this.LangModules) {
+            if (Object.prototype.hasOwnProperty.call(this.LangModules, key)) {
                 if (key.startsWith(config_1.Config.locale + '_')) {
-                    all[key] = LangModules[key];
+                    all[key] = this.LangModules[key];
                 }
             }
         }
@@ -271,4 +272,5 @@ class Lang {
     }
 }
 exports.Lang = Lang;
+Lang.LangModules = {};
 //# sourceMappingURL=lang.js.map
