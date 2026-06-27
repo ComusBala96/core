@@ -10,6 +10,9 @@ class Blob {
     static getMimes(mimetypes) {
         return (0, helpers_1.getMimes)(mimetypes);
     }
+    static formatFileSize(bytes) {
+        return (0, helpers_1.formatFileSize)(bytes);
+    }
 }
 exports.Blob = Blob;
 _a = Blob;

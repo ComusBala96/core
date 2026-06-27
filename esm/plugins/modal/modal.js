@@ -1,3 +1,4 @@
+import { Guard } from '@orians/core';
 import { Config } from '../../app';
 import { App } from '../../services';
 import { Loader, Obj } from '../../utils';
@@ -14,7 +15,7 @@ export class Modal {
                 style="width:20px;height:20px;"> Loading...
             </div>
         `);
-        if ($('.app-modal').length > 0) {
+        if (Guard.domElement('.app-modal')) {
             App.create({
                 ...rest,
                 element: '.app-modal',

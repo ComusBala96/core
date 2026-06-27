@@ -1,11 +1,14 @@
 var _a;
-import { createImageUrl, getMimes, urlToBase64 } from '../../helpers';
+import { createImageUrl, formatFileSize, getMimes, urlToBase64 } from '../../helpers';
 export class Blob {
     static createImageUrl(file) {
         return createImageUrl(file);
     }
     static getMimes(mimetypes) {
         return getMimes(mimetypes);
+    }
+    static formatFileSize(bytes) {
+        return formatFileSize(bytes);
     }
 }
 _a = Blob;

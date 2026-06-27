@@ -1,4 +1,4 @@
-import { createImageUrl, getMimes, urlToBase64 } from '../../helpers';
+import { createImageUrl, formatFileSize, getMimes, urlToBase64 } from '../../helpers';
 
 export class Blob {
     static createImageUrl(file: File): string {
@@ -11,5 +11,8 @@ export class Blob {
 
     static getMimes(mimetypes: string): string {
         return getMimes(mimetypes);
+    }
+    static formatFileSize(bytes: number): string {
+        return formatFileSize(bytes);
     }
 }

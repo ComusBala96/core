@@ -19,4 +19,5 @@ export declare const urlToBase64: (url: string) => Promise<string>;
  * @return string
  */
 export declare function getMimes(mimetypes: string): string;
+export declare function formatFileSize(bytes: number): string;
 //# sourceMappingURL=blob.d.ts.map

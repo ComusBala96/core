@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Modal = void 0;
+const core_1 = require("@orians/core");
 const app_1 = require("../../app");
 const services_1 = require("../../services");
 const utils_1 = require("../../utils");
@@ -17,7 +18,7 @@ class Modal {
                 style="width:20px;height:20px;"> Loading...
             </div>
         `);
-        if ($('.app-modal').length > 0) {
+        if (core_1.Guard.domElement('.app-modal')) {
             services_1.App.create({
                 ...rest,
                 element: '.app-modal',

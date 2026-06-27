@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.urlToBase64 = void 0;
 exports.createImageUrl = createImageUrl;
 exports.getMimes = getMimes;
+exports.formatFileSize = formatFileSize;
 /**
  * It creates a string containing a blob URL pointing to the object given in the parameter.
  * @param file file path
@@ -40,5 +41,12 @@ function getMimes(mimetypes) {
         .split(',')
         .map((type) => type.split('/')[1])
         .join('|');
+}
+function formatFileSize(bytes) {
+    if (bytes === 0)
+        return '0 Bytes';
+    const units = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(1024));
+    return (bytes / Math.pow(1024, i)).toFixed(2) + ' ' + units[i];
 }
 //# sourceMappingURL=blob.js.map

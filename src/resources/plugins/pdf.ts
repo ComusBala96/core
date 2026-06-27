@@ -207,14 +207,6 @@ export function htmlToPdfMake(op: MakePdfOptions) {
     };
 }
 
-// export const parseJSON = (value: string | null, fallback = {}) => {
-//     try {
-//         return value ? Obj.jsonParse(value) : fallback;
-//     } catch {
-//         return fallback;
-//     }
-// };
-
 export function createDomObject(element: HTMLDivElement | null): any {
     if (!element) return { text: '', opacity: 0.2 };
 
