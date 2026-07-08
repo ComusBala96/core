@@ -7,32 +7,37 @@ function tomSelect(op) {
     if (typeof op === 'boolean') {
         op = {};
     }
-    const { element = 'select', create = false, field = 'text', direction = 'asc', placeholder = 'Select an option', } = op;
-    const selector = `.${element}`;
+    const { element = 'select', create = false, field = 'text', direction = 'asc', placeholder = 'Select an option' } = op;
+    const elements = Array.isArray(element) ? element : [element];
+    const placeholders = Array.isArray(placeholder) ? placeholder : Array(elements.length).fill(placeholder);
     if (typeof tom_select_1.default !== 'function') {
         console.error('Select plugin not loaded');
         return;
     }
-    if ($(selector).length > 0) {
+    elements.forEach((el, index) => {
+        const selector = `.${el}`;
+        if (!$(selector).length) {
+            return;
+        }
         new tom_select_1.default(selector, {
-            create: create,
+            create,
             sortField: [
                 {
-                    field: field,
-                    direction: direction,
+                    field,
+                    direction,
                 },
             ],
-            placeholder: placeholder,
+            placeholder: placeholders[index] ?? placeholders[0],
             plugins: {
                 remove_button: {
-                    title: 'Remove this item'
+                    title: 'Remove this item',
                 },
                 clear_button: {
-                    title: 'Clear'
+                    title: 'Clear',
                 },
-                dropdown_input: {}
+                dropdown_input: {},
             },
         });
-    }
+    });
 }
 //# sourceMappingURL=tom-select.js.map

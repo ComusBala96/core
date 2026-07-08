@@ -179,13 +179,6 @@ function htmlToPdfMake(op) {
         defaultValues,
     };
 }
-// export const parseJSON = (value: string | null, fallback = {}) => {
-//     try {
-//         return value ? Obj.jsonParse(value) : fallback;
-//     } catch {
-//         return fallback;
-//     }
-// };
 function createDomObject(element) {
     if (!element)
         return { text: '', opacity: 0.2 };
