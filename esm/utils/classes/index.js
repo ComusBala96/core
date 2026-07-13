@@ -11,4 +11,5 @@ export * from './strings';
 export * from './success';
 export * from './translations';
 export * from './url';
+export * from './tooltip';
 //# sourceMappingURL=index.js.map

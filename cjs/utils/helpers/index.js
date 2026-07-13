@@ -14,4 +14,5 @@ tslib_1.__exportStar(require("./strings"), exports);
 tslib_1.__exportStar(require("./success"), exports);
 tslib_1.__exportStar(require("./translations"), exports);
 tslib_1.__exportStar(require("./url"), exports);
+tslib_1.__exportStar(require("./tooltip"), exports);
 //# sourceMappingURL=index.js.map
