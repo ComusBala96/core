@@ -34,6 +34,7 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.jodit = jodit;
+exports.createJodit = createJodit;
 const app_1 = require("../../app");
 const services_1 = require("../../services");
 async function jodit(op) {
@@ -102,5 +103,24 @@ async function jodit(op) {
         return editor;
     });
     return editors.length === 1 ? editors[0] : editors;
+}
+async function createJodit(element, placeholder = 'Write your content', height = 300) {
+    const [{ Jodit }] = await Promise.all([Promise.resolve().then(() => __importStar(require('jodit'))), Promise.resolve().then(() => __importStar(require('jodit/esm/plugins/all.js')))]);
+    const fontFamily = app_1.Config.locale === 'bn' ? 'SolaimanLipi' : 'Roboto';
+    const editor = Jodit.make(`.${element}`, {
+        readonly: false,
+        width: '100%',
+        height,
+        placeholder,
+        style: {
+            background: 'rgba(209,213,219,.2)',
+            fontSize: '14px',
+            fontFamily,
+        },
+        language: app_1.Config.locale,
+        toolbarAdaptive: false,
+    });
+    services_1.App.editor = editor;
+    return editor;
 }
 //# sourceMappingURL=jodit.js.map

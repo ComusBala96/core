@@ -67,4 +67,23 @@ export async function jodit(op) {
     });
     return editors.length === 1 ? editors[0] : editors;
 }
+export async function createJodit(element, placeholder = 'Write your content', height = 300) {
+    const [{ Jodit }] = await Promise.all([import('jodit'), import('jodit/esm/plugins/all.js')]);
+    const fontFamily = Config.locale === 'bn' ? 'SolaimanLipi' : 'Roboto';
+    const editor = Jodit.make(`.${element}`, {
+        readonly: false,
+        width: '100%',
+        height,
+        placeholder,
+        style: {
+            background: 'rgba(209,213,219,.2)',
+            fontSize: '14px',
+            fontFamily,
+        },
+        language: Config.locale,
+        toolbarAdaptive: false,
+    });
+    App.editor = editor;
+    return editor;
+}
 //# sourceMappingURL=jodit.js.map
