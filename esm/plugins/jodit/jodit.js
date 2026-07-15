@@ -67,23 +67,60 @@ export async function jodit(op) {
     });
     return editors.length === 1 ? editors[0] : editors;
 }
-export async function createJodit(element, placeholder = 'Write your content', height = 300) {
+export async function singleJodit(op = {}) {
+    if (typeof op === 'boolean') {
+        op = {};
+    }
     const [{ Jodit }] = await Promise.all([import('jodit'), import('jodit/esm/plugins/all.js')]);
+    const { element = 'none', height = 300, placeholder = 'Write your content', removeButtons = [], buttons } = op;
+    if (Config.app_env) {
+        console.log('Jodit Options:', op);
+    }
     const fontFamily = Config.locale === 'bn' ? 'SolaimanLipi' : 'Roboto';
+    const defaultButtons = ['bold', 'italic', 'underline', 'fontsize', 'ul', 'ol', 'table', 'link', 'preview', 'source'];
+    let buttonsConfig;
+    const currentButtons = (buttons ?? []);
+    try {
+        buttonsConfig = buttons ? [...new Set([...defaultButtons, ...currentButtons])] : defaultButtons;
+    }
+    catch {
+        buttonsConfig = Jodit.defaultOptions.buttons;
+    }
     const editor = Jodit.make(`.${element}`, {
         readonly: false,
         width: '100%',
         height,
         placeholder,
         style: {
-            background: 'rgba(209,213,219,.2)',
+            background: 'rgba(209, 213, 219, 0.2)',
             fontSize: '14px',
             fontFamily,
         },
+        // @ts-ignore
+        defaultMode: Jodit.MODE_WYSIWYG,
         language: Config.locale,
         toolbarAdaptive: false,
+        uploader: {
+            insertImageAsBase64URI: true,
+        },
+        image: {
+            editSrc: true,
+            // @ts-ignore
+            width: '300px',
+            useImageEditor: true,
+        },
+        buttons: buttonsConfig,
+        removeButtons: ['speechRecognize', 'file', ...removeButtons],
     });
-    App.editor = editor;
+    editor.events.on('afterInit', () => {
+        if (editor.value === '<p><br></p>') {
+            editor.value = '';
+        }
+    });
+    if (editor.editor) {
+        editor.editor.style.fontFamily = fontFamily;
+    }
+    App.editors[element] = editor;
     return editor;
 }
 //# sourceMappingURL=jodit.js.map

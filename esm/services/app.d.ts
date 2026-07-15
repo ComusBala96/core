@@ -3,6 +3,7 @@ import { AppConfig, ExcelConfig, PdfConfig } from '../types';
 import { Jodit } from 'jodit';
 export declare class App {
     static editor: Jodit;
+    static editors: Record<string, Jodit>;
     static config: AppConfig;
     static pluginConfig: AppConfig;
     static tableConfig: AppConfig;

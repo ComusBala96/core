@@ -168,6 +168,7 @@ export class App {
         return this;
     }
 }
+App.editors = {};
 App.config = {};
 App.pluginConfig = {};
 App.tableConfig = {};

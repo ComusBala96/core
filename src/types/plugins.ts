@@ -122,6 +122,14 @@ export interface JoditOptions {
     removeButtons?: string[] | string[][];
     reset?: false;
 }
+export interface singleJoditOptions {
+    element?: string;
+    height?: number;
+    placeholder?: string;
+    buttons?: string[];
+    removeButtons?: string[];
+    reset?: false;
+}
 
 // Modal Types
 

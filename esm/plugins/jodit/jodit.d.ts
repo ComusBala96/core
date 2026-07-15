@@ -1,5 +1,5 @@
 import type { Jodit } from 'jodit';
-import { JoditOptions } from '../../types';
+import { JoditOptions, singleJoditOptions } from '../../types';
 export declare function jodit(op: JoditOptions | boolean): Promise<Jodit | Jodit[]>;
-export declare function createJodit(element: string, placeholder?: string, height?: number): Promise<Jodit>;
+export declare function singleJodit(op?: singleJoditOptions | boolean): Promise<Jodit>;
 //# sourceMappingURL=jodit.d.ts.map

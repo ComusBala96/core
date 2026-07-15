@@ -10,7 +10,41 @@ Modal
 
 export class Modal {
     static request(op: AppConfig): void {
-        const { element = 'NA', url = '/', payload = {}, title = 'No title provided', ...rest } = op;
+        const {
+            element = 'NA',
+            url = '/',
+            payload = {},
+            title = 'No title provided',
+            width = '768px',
+            height = 'auto',
+            maxWidth = '90vw',
+            maxHeight = '90vh',
+            dialogClass = '',
+            ...rest
+        } = op;
+        const $dialog = $('.app-modal .modal-dialog');
+        const $content = $dialog.children().first();
+
+        $dialog.removeAttr('style');
+        $content.removeAttr('style');
+
+        $dialog.removeClass(function (_, cls) {
+            return (cls.match(/max-w-\S+/g) || []).join(' ');
+        });
+
+        if (dialogClass) {
+            $dialog.addClass(dialogClass);
+        }
+
+        $dialog.css({
+            width,
+            maxWidth,
+        });
+
+        $content.css({
+            height,
+            maxHeight,
+        });
         /* loading UI */
         $('.modal-body').html(`
             <div class="w-full flex justify-center items-center">

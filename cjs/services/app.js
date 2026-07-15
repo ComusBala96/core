@@ -172,6 +172,7 @@ class App {
     }
 }
 exports.App = App;
+App.editors = {};
 App.config = {};
 App.pluginConfig = {};
 App.tableConfig = {};
