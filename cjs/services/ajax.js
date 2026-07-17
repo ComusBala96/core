@@ -43,7 +43,7 @@ class Ajax {
             return;
         }
         if (validation) {
-            (0, resources_1.validate)(op, app_2.App.successHandler);
+            app_2.App.validator = (0, resources_1.validate)(op, app_2.App.successHandler);
             return;
         }
         if (dataType.toLocaleLowerCase() === 'form') {

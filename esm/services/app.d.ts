@@ -4,6 +4,7 @@ import { Jodit } from 'jodit';
 export declare class App {
     static editor: Jodit;
     static editors: Record<string, Jodit>;
+    static validator: any;
     static config: AppConfig;
     static pluginConfig: AppConfig;
     static tableConfig: AppConfig;
@@ -36,6 +37,8 @@ export declare class App {
     static afterSuccess<T extends typeof App>(this: T, callback: (op: AppConfig, res: Record<string, any>) => void): T;
     static plugins<T extends typeof App>(this: T, config: AppConfig): T;
     static event<T extends typeof App>(this: T, event: string, element: string, callback: (e: JQuery.TriggeredEvent, element: HTMLElement) => void): T;
+    static refreshValidation(rules?: Record<string, any>): void;
+    static addValidationRules(name: string, rules: Record<string, any>): void;
     static legacy<T extends typeof App>(this: T, config: AppConfig, callback: Function): T;
 }
 //# sourceMappingURL=app.d.ts.map

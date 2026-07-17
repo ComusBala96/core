@@ -6,6 +6,7 @@ const utils_1 = require("../utils");
 const crud_1 = require("./crud");
 const ajax_1 = require("./ajax");
 const app_1 = require("../app");
+const resources_1 = require("../resources");
 class App {
     static bootPlugin(config) {
         if (utils_1.Guard.isPlugin(config?.plugins)) {
@@ -165,6 +166,28 @@ class App {
         utils_1.Dom.event(event, element, callback);
         return this;
     }
+    static refreshValidation(rules) {
+        if (!this.createConfig?.element) {
+            return;
+        }
+        if (rules) {
+            this.createConfig.rules = rules;
+        }
+        if (this.validator && typeof this.validator.destroy === 'function') {
+            this.validator.destroy();
+        }
+        this.validator = (0, resources_1.validate)(this.createConfig, this.successHandler);
+    }
+    static addValidationRules(name, rules) {
+        if (!this.validator) {
+            return;
+        }
+        const $field = $(`[name="${name}"]`);
+        if ($field.length) {
+            // @ts-ignore
+            $field.rules('add', rules);
+        }
+    }
     static legacy(config, callback) {
         const {} = config;
         callback();
@@ -173,6 +196,7 @@ class App {
 }
 exports.App = App;
 App.editors = {};
+App.validator = null;
 App.config = {};
 App.pluginConfig = {};
 App.tableConfig = {};

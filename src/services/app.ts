@@ -6,10 +6,12 @@ import { Crud } from './crud';
 import { Ajax } from './ajax';
 import { Config } from '../app';
 import { Jodit } from 'jodit';
+import { validate } from '../resources';
 
 export class App {
     static editor: Jodit;
     static editors: Record<string, Jodit> = {};
+    static validator: any = null;
     static config: AppConfig = {};
     static pluginConfig: AppConfig = {};
     static tableConfig: AppConfig = {};
@@ -177,6 +179,28 @@ export class App {
     static event<T extends typeof App>(this: T, event: string, element: string, callback: (e: JQuery.TriggeredEvent, element: HTMLElement) => void): T {
         Dom.event(event, element, callback);
         return this;
+    }
+    static refreshValidation(rules?: Record<string, any>) {
+        if (!this.createConfig?.element) {
+            return;
+        }
+        if (rules) {
+            this.createConfig.rules = rules;
+        }
+        if (this.validator && typeof this.validator.destroy === 'function') {
+            this.validator.destroy();
+        }
+        this.validator = validate(this.createConfig, this.successHandler);
+    }
+    static addValidationRules(name: string, rules: Record<string, any>) {
+        if (!this.validator) {
+            return;
+        }
+        const $field = $(`[name="${name}"]`);
+        if ($field.length) {
+            // @ts-ignore
+            $field.rules('add', rules);
+        }
     }
     static legacy<T extends typeof App>(this: T, config: AppConfig, callback: Function): T {
         const {} = config;

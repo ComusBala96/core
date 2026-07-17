@@ -7,7 +7,7 @@ export function validate(op: AppConfig, callBack: undefined | ((op: AppConfig, r
     const { element, rules = {}, messages = {}, afterValidation } = op;
     if (element) var $form = Dom.getElementById(element) as JQuery<HTMLFormElement> | HTMLFormElement;
     // @ts-ignore
-    $form.validate({
+    return $form.validate({
         rules,
         messages: messages ?? Obj.getValidationMessages(rules),
         ignore: ':hidden:not(textarea)',

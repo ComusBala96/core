@@ -9,7 +9,7 @@ function validate(op, callBack) {
     if (element)
         var $form = utils_1.Dom.getElementById(element);
     // @ts-ignore
-    $form.validate({
+    return $form.validate({
         rules,
         messages: messages ?? utils_1.Obj.getValidationMessages(rules),
         ignore: ':hidden:not(textarea)',

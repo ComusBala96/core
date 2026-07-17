@@ -44,7 +44,7 @@ export class Ajax {
             return;
         }
         if (validation) {
-            validate(op, App.successHandler);
+            App.validator = validate(op, App.successHandler);
             return;
         }
         if (dataType.toLocaleLowerCase() === 'form') {

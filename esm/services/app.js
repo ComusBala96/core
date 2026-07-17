@@ -3,6 +3,7 @@ import { Dom, Guard } from '../utils';
 import { Crud } from './crud';
 import { Ajax } from './ajax';
 import { Config } from '../app';
+import { validate } from '../resources';
 export class App {
     static bootPlugin(config) {
         if (Guard.isPlugin(config?.plugins)) {
@@ -162,6 +163,28 @@ export class App {
         Dom.event(event, element, callback);
         return this;
     }
+    static refreshValidation(rules) {
+        if (!this.createConfig?.element) {
+            return;
+        }
+        if (rules) {
+            this.createConfig.rules = rules;
+        }
+        if (this.validator && typeof this.validator.destroy === 'function') {
+            this.validator.destroy();
+        }
+        this.validator = validate(this.createConfig, this.successHandler);
+    }
+    static addValidationRules(name, rules) {
+        if (!this.validator) {
+            return;
+        }
+        const $field = $(`[name="${name}"]`);
+        if ($field.length) {
+            // @ts-ignore
+            $field.rules('add', rules);
+        }
+    }
     static legacy(config, callback) {
         const {} = config;
         callback();
@@ -169,6 +192,7 @@ export class App {
     }
 }
 App.editors = {};
+App.validator = null;
 App.config = {};
 App.pluginConfig = {};
 App.tableConfig = {};
